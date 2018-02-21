@@ -1,3 +1,5 @@
+
+###############importation des autres fichiers#################################################
 from bottle import run, template, static_file, view, Bottle, request, response
 from sys import argv
 import sys
@@ -18,12 +20,11 @@ import traceback
 app = Bottle()
 mdp = []
 
-
+############### authentication, password, importation des pages ###############################
 @app.route('/admin')
 @view('authentification')
 def export():
     return {'get_url':  app.get_url}
-
 
 @app.route('/auth', method="POST")
 def auth():
@@ -104,7 +105,7 @@ def credits():
         return template('authentification', get_url=app.get_url)
     return {'get_url':  app.get_url}
 
-# Test qualitative attributes
+############### page manage atributes #################################################
 @app.route('/words')
 @view('words')
 def words():
@@ -126,6 +127,7 @@ def ajax():
     reader = codecs.getreader("utf-8")
     query = json.load(reader(request.body))
 
+############### calculs de proba / utility assessment page #################################################
     if query['type'] == "question":
         if query['method'] == 'PE':
             return methods.PE(float(query['min_interval']), float(query['max_interval']), float(query['proba']), int(query['choice']), str(query['mode']))
