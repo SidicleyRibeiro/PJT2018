@@ -1,3 +1,16 @@
+######################probawheel##############################
+def probawheel(choix,s1,interval):    
+   if choix == 'r':
+       interval[1] = s1
+       s1 = (interval[0] + interval[1])/2
+   if choix == 'e':
+       interval[0] = s1
+       s1 = (interval[0] + interval[1])/2
+   s2 = 1-s1
+   result = [s1,s2,interval]
+   return result
+
+##########################################################3
 def PE_old(p, c):
     # p -> proba
     # c -> choix  0= choix sur 1= choix lotterie
