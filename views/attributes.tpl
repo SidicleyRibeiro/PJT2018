@@ -18,7 +18,7 @@
 		<button type="button" class="btn btn-default btn-lg" id="button_Other">Other</button>
 	</div>
 	<br/>
-	</div style="width:50%;margin-left:25%;margin-bottom:25px;">
+	</div style="text-align:center;">
 		<button type="submit" class="btn btn-success" id="submit">Submit</button>
 	</div>
 	
