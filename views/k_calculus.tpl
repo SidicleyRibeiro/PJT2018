@@ -14,9 +14,9 @@
     </tbody>
 </table>
 
-<!--
+
 <!---------------------- Alert for minimum number of attributes ---------------------->
-<div id="not_enough_attributes" class="alert alert-danger" role="alert">You need at least 2 active attributes to calculate multi-attributes utility function.</div>
+<!--<div id="not_enough_attributes" class="alert alert-danger" role="alert">You need at least 2 active attributes to calculate multi-attributes utility function.</div>
 <div id="page-content">
 
 	<!---------------------- Scaling K_i coefficients ---------------------->
