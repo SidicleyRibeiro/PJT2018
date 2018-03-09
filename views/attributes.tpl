@@ -3,7 +3,9 @@
 <h2>State your problem:</h2>
    <body>
       <p>Examples: write different examples</p>
-      <p>I would like to assess the probability of... <input type="text" class="form-control" id="problem_statement" placeholder="Probability Statement"> </p>
+      <p>I would like to assess the probability of... </p>
+      <br/>
+      <p><input type="text" class="form-control" id="problem_statement" placeholder="Probability Statement"></p>
    </body>
    
 <br/>
@@ -26,7 +28,7 @@
 
 /// Function that manages the influence of the "button_type" buttons (Quantitative/Qualitative) (just the design : green/white)
 function update_method_button(type){
-	var list_types = ["Wheel", "Paris", "Other"];
+	var list_types = ["Probability Wheel", "Bet probability", "Other"];
 	
 	for(var i=0; i<list_types.length; i++){
 		if(type==list_types[i]){
@@ -43,12 +45,12 @@ function update_method_button(type){
 $(function() {
 	///  ACTION FROM BUTTON WHEEN
 	$("#button_Wheel").click(function () {
-		update_method_button("Wheel"); //update the active type of new attribute
+		update_method_button("Probability Wheel"); //update the active type of new attribute
 	});
 
 	///  ACTION FROM BUTTON BET
 	$("#button_Paris").click(function () {
-		update_method_button("Paris"); //update the active type of new attribute
+		update_method_button("Bet probability"); //update the active type of new attribute
 	});
 	
 	///  ACTION FROM BUTTON OTHER
