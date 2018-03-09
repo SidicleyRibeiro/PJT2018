@@ -55,7 +55,7 @@
 	<div id="trees"></div>
 	<br/>
 
-	<!---------------------- K computation ---------------------->
+	<!---------------------- K computation ---------------------
 	<div id="K_computation">
 		<div class="page-header">
 		  <h3>K computation</h3>
@@ -76,7 +76,7 @@
 		<br/>
 	</div>
 
-	<!---------------------- Choose utility function for each attributes ---------------------->
+	<!---------------------- Choose utility function for each attributes ----------------------
 	<div class="page-header">
 	  <h3>Choose utility function for each attributes</h3>
 	</div>
@@ -100,7 +100,7 @@
 		<br/>
 	</div>
 
-	<!---------------------- Determine the multi-attribute utility function ---------------------->
+	<!---------------------- Determine the multi-attribute utility function ----------------------
 	<div class="page-header">
 	  <h3>Determine the multi-attribute utility function</h3>
 	</div>
