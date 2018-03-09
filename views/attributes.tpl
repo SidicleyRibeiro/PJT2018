@@ -26,7 +26,7 @@
 
 /// Function that manages the influence of the "button_type" buttons (Quantitative/Qualitative) (just the design : green/white)
 function update_method_button(type){
-	var list_types = ["Probability Wheel", "Bet probability", "Other"];
+	var list_types = ["Wheel", "Paris", "Other"];
 	
 	for(var i=0; i<list_types.length; i++){
 		if(type==list_types[i]){
@@ -43,12 +43,12 @@ function update_method_button(type){
 $(function() {
 	///  ACTION FROM BUTTON WHEEN
 	$("#button_Wheel").click(function () {
-		update_method_button("Probability Wheel"); //update the active type of new attribute
+		update_method_button("Wheel"); //update the active type of new attribute
 	});
 
 	///  ACTION FROM BUTTON BET
 	$("#button_Paris").click(function () {
-		update_method_button("Bet probability"); //update the active type of new attribute
+		update_method_button("Paris"); //update the active type of new attribute
 	});
 	
 	///  ACTION FROM BUTTON OTHER
