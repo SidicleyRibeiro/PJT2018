@@ -117,7 +117,7 @@
 
 <script> var tree_image = '{{ get_url("static", path="img/tree_choice.png") }}'; </script>
 
-<!-- Tree object -->
+<!-- Tree object --
 <script src="{{ get_url('static', path='js/tree.js') }}"></script>
 <script src="{{ get_url('static', path='js/clipboard.min.js') }}"></script>
 <script src="{{ get_url('static', path='js/k_calculus.js') }}"></script>
