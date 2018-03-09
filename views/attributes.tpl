@@ -20,6 +20,24 @@
 %include('header_end.tpl')
 %include('js.tpl')
 
+<script>
+////////////////////////////Other functions////////////////////////////
+
+
+/// Function that manages the influence of the "button_type" buttons (Quantitative/Qualitative) (just the design : green/white)
+function update_method_button(type){
+	var list_types = ["Quantitative", "Qualitative"];
+	
+	for(var i=0; i<list_types.length; i++){
+		if(type==list_types[i]){
+			$("#button_"+list_types[i]).removeClass('btn-default');
+			$("#button_"+list_types[i]).addClass('btn-success');
+		} else {
+			$("#button_"+list_types[i]).removeClass('btn-success');
+			$("#button_"+list_types[i]).addClass('btn-default');
+		}
+	}
+}
 
 /// Action from Quantitative/Qualitative button
 $(function() {
