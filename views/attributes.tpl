@@ -26,7 +26,7 @@
 
 /// Function that manages the influence of the "button_type" buttons (Quantitative/Qualitative) (just the design : green/white)
 function update_method_button(type){
-	var list_types = ["Quantitative", "Qualitative"];
+	var list_types = ["Probability Wheel", "Bet probability", "Other"];
 	
 	for(var i=0; i<list_types.length; i++){
 		if(type==list_types[i]){
