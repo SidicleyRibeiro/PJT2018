@@ -1,5 +1,20 @@
-%include('header_init.tpl', heading='Scaling constants')
+%include('header_init.tpl', heading='Results')
 
+<h2>Assesments Results:</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style='width:50px;'>Problem</th>
+			<th>Methode</th>
+            <th>Probability Result</th>
+            <th><button type="button" class="btn btn-danger del_simu"><img src='/static/img/delete.ico' style='width:16px;'/></button></th>
+        </tr>
+    </thead>
+    <tbody id="table_results">
+    </tbody>
+</table>
+
+<!--
 <!---------------------- Alert for minimum number of attributes ---------------------->
 <div id="not_enough_attributes" class="alert alert-danger" role="alert">You need at least 2 active attributes to calculate multi-attributes utility function.</div>
 <div id="page-content">
@@ -129,6 +144,7 @@ $(function() {
 		}
 	}
 });
+-->
 </script>
 
 </body>
