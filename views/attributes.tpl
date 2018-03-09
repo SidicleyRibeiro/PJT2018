@@ -3,7 +3,7 @@
 <h2>State your problem:</h2>
    <body>
       <p>Examples: write different examples</p>
-      <p>I would like to assess the probability of..... </p>
+      <p>I would like to assess the probability of... <input type="text" class="form-control" id="problem_statement" placeholder="Probability Statement"> </p>
    </body>
    
 <br/>
