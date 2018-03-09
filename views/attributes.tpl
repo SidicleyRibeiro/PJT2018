@@ -30,6 +30,7 @@
 	<div id="button_type" style="text-align:center;">
 		<button type="button" class="btn btn-default btn-lg" id="button_Wheel">Probability Wheel</button>
 		<button type="button" class="btn btn-default btn-lg" id="button_Paris">Bet probability</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_Other">Other</button>
 	</div>
    
 <!--<div id="add_attribute" style="width:50%;margin-left:25%;margin-bottom:25px;">
