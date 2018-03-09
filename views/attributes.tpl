@@ -1,6 +1,6 @@
-%include('header_init.tpl', heading='Manage your attributes')
+%include('header_init.tpl', heading='Problem Statement')
 
-<h2>List of current attributes:</h2>
+<!--<h2>List of current attributes:</h2>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -17,7 +17,7 @@
     </thead>
     <tbody id="table_attributes">
     </tbody>
-</table>
+</table>-->
 
 <br />
 
