@@ -1,24 +1,5 @@
 %include('header_init.tpl', heading='Problem Statement')
 
-<!--<h2>List of current attributes:</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th style='width:50px;'>State</th>
-			<th>Type</th>
-            <th>Attribute name</th>
-            <th>Unit</th>
-            <th>Values</th>
-            <th>Method</th>
-            <th>Mode</th>
-            <th>Edit</th>
-            <th><button type="button" class="btn btn-danger del_simu"><img src='/static/img/delete.ico' style='width:16px;'/></button></th>
-        </tr>
-    </thead>
-    <tbody id="table_attributes">
-    </tbody>
-</table>-->
-
 <h2>State your problem:</h2>
    <body>
       <p>Examples: write different examples</p>
@@ -26,85 +7,11 @@
    </body>
    
 <br/>
-<h2>Choose your method2:</h2>
+<h2>Choose your method:</h2>
 	<div id="button_type" style="text-align:center;">
 		<button type="button" class="btn btn-default btn-lg" id="button_Wheel">Probability Wheel</button>
 		<button type="button" class="btn btn-default btn-lg" id="button_Paris">Bet probability</button>
 		<button type="button" class="btn btn-default btn-lg" id="button_Other">Other</button>
-	</div>
-   
-<!--<div id="add_attribute" style="width:50%;margin-left:25%;margin-bottom:25px;">
-    <h2> State your problem: </h2>
-	
-	<div id="button_type" style="text-align:center;">
-		<button type="button" class="btn btn-default btn-lg" id="button_Quantitative">Quantitative</button>
-		<button type="button" class="btn btn-default btn-lg" id="button_Qualitative">Qualitative</button>
-	</div>-->
-	
-    <!------------ FORM FOR A QUANTITATIVE ATTRIBUTE ------------>
-	<div id="form_quanti">
-		<div class="form-group">
-			<label for="att_name_quanti">Name:</label>
-			<input type="text" class="form-control" id="att_name_quanti" placeholder="Name">
-		</div>
-
-		<div class="form-group">
-			<label for="att_unit_quanti">Unit:</label>
-			<input type="text" class="form-control" id="att_unit_quanti" placeholder="Unit">
-		</div>
-		<div class="form-group">
-			<label for="att_value_min_quanti">Min value:</label>
-			<input type="text" class="form-control" id="att_value_min_quanti" placeholder="Value">
-		</div>
-		<div class="form-group">
-			<label for="att_value_max_quanti">Max value:</label>
-			<input type="text" class="form-control" id="att_value_max_quanti" placeholder="Value">
-		</div>
-		<div class="form-group">
-			<label for="att_method_quanti">Method:</label>
-			<select class="form-control" id="att_method_quanti">
-				<option value="PE">Probability Equivalence</option>
-				<option value="CE_Constant_Prob">Certainty Equivalence - Constant Probability</option>
-				<option value="CE_Variable_Prob">Certainty Equivalence - Variable Probability</option>
-				<option value="LE">Lottery Equivalence</option>
-			</select>
-		</div>
-		<div class="checkbox">
-			<label><input name="mode" type="checkbox" id="att_mode_quanti" placeholder="Mode"> The min value is preferred (decreasing utility function)</label>
-		</div>
-
-		<button type="submit" class="btn btn-success" id="submit_quanti">Submit</button>
-	</div>
-	
-	<!------------ FORM FOR A QUALITATIVE ATTRIBUTE ------------>
-	<div id="form_quali">
-		<div class="form-group">
-			<label for="att_name_quali">Name:</label>
-			<input type="text" class="form-control" id="att_name_quali" placeholder="Name">
-		</div>
-		
-		<h3> Please rank the values by order of preference: </h3>
-
-		<div class="form-group">
-			<label for="att_value_min_quali">Least preferred value:</label>
-			<input type="text" class="form-control" id="att_value_min_quali" placeholder="Worst value">
-		</div>
-		
-		<div class="form-group">
-			<label for="att_value_med_quali">Intermediate value(s):</label>
-				<input type="button" class="btn btn-default" id="add_value_med_quali" value="Add an item"/>   
-				<input type="button" class="btn btn-default" id="del_value_med_quali" value="Delete last item"/>
-				<ol id="list_med_values_quali">
-					<li class="col-auto"><input type="text" class="form-control col-auto" id="att_value_med_quali_1" placeholder='Intermediate Value 1'/></li>
-				</ol>
-		</div>
-		
-		<div class="form-group">
-			<label for="att_value_max_quali">Most preferred value:</label>
-			<input type="text" class="form-control" id="att_value_max_quali" placeholder="Best value">
-		</div>
-			
-		<button type="submit" class="btn btn-success" id="submit_quali">Submit</button>
 	</div>
 	
 	
@@ -113,69 +20,17 @@
 %include('header_end.tpl')
 %include('js.tpl')
 
-<script>
-//First we hide the attributes creation forms, and we highlight the "Manage" tab
-$("#form_quanti").hide();
-$("#form_quali").hide();
-$('li.manage').addClass("active");
-
-/////////////////////////////////////////////////////////////////////////////////////////
-// Fonctions pour ajouter/supprimer des zones de texte pour les valeurs intermédiaires //
-/////////////////////////////////////////////////////////////////////////////////////////
-var list_med_values = document.getElementById('list_med_values_quali'),
-	lists = list_med_values.getElementsByTagName('li'),
-	add_value_med = document.getElementById('add_value_med_quali'),
-	del_value_med = document.getElementById('del_value_med_quali');
-
-/// Defines what happens when clicking on the "Add an item" button
-add_value_med.addEventListener('click', function() {
-	var longueur = lists.length;
-	var new_item = document.createElement('li');
-	new_item.innerHTML = "<input type='text' class='form-control' id='att_value_med_quali_"+ String(longueur+1) +"' placeholder='Intermediate Value " + String(longueur+1) +"'/>";
-	lists[longueur-1].parentNode.appendChild(new_item);
-});
-
-/// Defines what happens when clicking on the "Delete last item" button
-del_value_med.addEventListener('click', function() {
-	var longueur = lists.length;
-	if (longueur!=1){
-		lists[longueur-1].parentNode.removeChild(lists[longueur-1]);
-	} else {
-		alert("Please put at least one medium value for the attribute "+$('#att_name').val());
-	};
-});
-
-/// Function that manages the influence of the "button_type" buttons (Quantitative/Qualitative) (just the design : green/white)
-function update_method_button(type){
-	var list_types = ["Quantitative", "Qualitative"];
-	
-	for(var i=0; i<list_types.length; i++){
-		if(type==list_types[i]){
-			$("#button_"+list_types[i]).removeClass('btn-default');
-			$("#button_"+list_types[i]).addClass('btn-success');
-		} else {
-			$("#button_"+list_types[i]).removeClass('btn-success');
-			$("#button_"+list_types[i]).addClass('btn-default');
-		}
-	}
-}
 
 /// Action from Quantitative/Qualitative button
 $(function() {
 	///  ACTION FROM BUTTON QUANTITATIVE
 	$("#button_Quantitative").click(function () {
 		update_method_button("Quantitative"); //update the active type of new attribute
-		$("#form_quali").fadeOut(500);
-		$("#form_quanti").fadeIn(500);
-		window.scrollBy(0, 500);
 	});
 
 	///  ACTION FROM BUTTON QUALITATIVE
 	$("#button_Qualitative").click(function () {
 		update_method_button("Qualitative"); //update the active type of new attribute
-		$("#form_quanti").fadeOut(500);
-		$("#form_quali").fadeIn(500);
-		window.scrollBy(0, 500);
 	});
 });
 
