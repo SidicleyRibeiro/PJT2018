@@ -19,15 +19,24 @@
     </tbody>
 </table>-->
 
-<br />
+   <head>
+      <title>State your problem:</title>
+   </head>
+	
+   <body>
+      <p>Examples: write different examples</p>
+      <br/>
+      <p>I would like to assess the probability of..... </p>
+   </body>
+   
 
-<div id="add_attribute" style="width:50%;margin-left:25%;margin-bottom:25px;">
-    <h2> Add a new attribute: </h2>
+<!--<div id="add_attribute" style="width:50%;margin-left:25%;margin-bottom:25px;">
+    <h2> State your problem: </h2>
 	
 	<div id="button_type" style="text-align:center;">
 		<button type="button" class="btn btn-default btn-lg" id="button_Quantitative">Quantitative</button>
 		<button type="button" class="btn btn-default btn-lg" id="button_Qualitative">Qualitative</button>
-	</div>
+	</div>-->
 	
     <!------------ FORM FOR A QUANTITATIVE ATTRIBUTE ------------>
 	<div id="form_quanti">
