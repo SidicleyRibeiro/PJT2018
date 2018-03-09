@@ -17,7 +17,9 @@
 		<button type="button" class="btn btn-default btn-lg" id="button_Paris">Bet probability</button>
 		<button type="button" class="btn btn-default btn-lg" id="button_Other">Other</button>
 	</div>
-	
+	</div>
+		<button type="submit" class="btn btn-success" id="submit">Submit</button>
+	</div>
 	
 </div>
 
