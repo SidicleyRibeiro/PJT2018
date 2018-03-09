@@ -19,17 +19,19 @@
     </tbody>
 </table>-->
 
-   <head>
-      <title>State your problem:</title>
-   </head>
-	
+<h2>State your problem:</h2>
    <body>
       <p>Examples: write different examples</p>
-      <br/>
       <p>I would like to assess the probability of..... </p>
    </body>
    
-
+<br/>
+<h2>Choose your method:</h2>
+	<div id="button_type" style="text-align:center;">
+		<button type="button" class="btn btn-default btn-lg" id="button_Wheel">Probability Wheel</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_Paris">Bet probability</button>
+	</div>
+   
 <!--<div id="add_attribute" style="width:50%;margin-left:25%;margin-bottom:25px;">
     <h2> State your problem: </h2>
 	
