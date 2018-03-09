@@ -23,14 +23,19 @@
 
 /// Action from Quantitative/Qualitative button
 $(function() {
-	///  ACTION FROM BUTTON QUANTITATIVE
-	$("#button_Quantitative").click(function () {
-		update_method_button("Quantitative"); //update the active type of new attribute
+	///  ACTION FROM BUTTON WHEEN
+	$("#button_Wheel").click(function () {
+		update_method_button("Probability Wheel"); //update the active type of new attribute
 	});
 
-	///  ACTION FROM BUTTON QUALITATIVE
-	$("#button_Qualitative").click(function () {
-		update_method_button("Qualitative"); //update the active type of new attribute
+	///  ACTION FROM BUTTON BET
+	$("#button_Paris").click(function () {
+		update_method_button("Bet probability"); //update the active type of new attribute
+	});
+	
+	///  ACTION FROM BUTTON OTHER
+	$("#button_Other").click(function () {
+		update_method_button("Other"); //update the active type of new attribute
 	});
 });
 
