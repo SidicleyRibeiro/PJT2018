@@ -5,7 +5,7 @@
       <p>Examples: write different examples</p>
       <div class="form-group">
 			<label for="att_name_quanti">I would like to assess the probability of...</label>
-			<input type="text" class="form-control" id="prob_statement" placeholder="Problem Statement">
+			<input type="text" class="form-control" id="prob_statement" placeholder="Problem Statement"/input>
 		</div>
       
    </body>
