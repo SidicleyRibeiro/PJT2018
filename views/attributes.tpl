@@ -26,7 +26,7 @@
    </body>
    
 <br/>
-<h2>Choose your method:</h2>
+<h2>Choose your method2:</h2>
 	<div id="button_type" style="text-align:center;">
 		<button type="button" class="btn btn-default btn-lg" id="button_Wheel">Probability Wheel</button>
 		<button type="button" class="btn btn-default btn-lg" id="button_Paris">Bet probability</button>
