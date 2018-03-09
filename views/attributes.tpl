@@ -3,9 +3,11 @@
 <h2>State your problem:</h2>
    <body>
       <p>Examples: write different examples</p>
-      <p>I would like to assess the probability of... </p>
-      <br/>
-      <p><input type="text" class="form-control" id="problem_statement" placeholder="Probability Statement"></p>
+      <div class="form-group">
+			<label for="att_name_quanti">I would like to assess the probability of...</label>
+			<input type="text" class="form-control" id="prob_statement" placeholder="Problem Statement">
+		</div>
+      
    </body>
    
 <br/>
