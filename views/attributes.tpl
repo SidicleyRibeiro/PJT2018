@@ -25,8 +25,8 @@
     <h2> Add a new problem: </h2>
 	
 	<div id="button_type" style="text-align:center;">
-		<button type="button" class="btn btn-default btn-lg" id="button_Discret">Discret</button>
-		<button type="button" class="btn btn-default btn-lg" id="button_Continuous">Continuous</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_discret">Discret</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_continuous">Continuous</button>
 	</div>
 	
     <!------------ FORM FOR A DISCRET PROBLEM ------------>
@@ -139,9 +139,9 @@ del_value_med.addEventListener('click', function() {
 		alert("Please put at least one medium value for the attribute "+$('#att_name').val());
 	};
 });
-/// Function that manages the influence of the "button_type" buttons (Quantitative/Qualitative) (just the design : green/white)
+/// Function that manages the influence of the "button_type" buttons (Continuous/Discret) (just the design : green/white)
 function update_method_button(type){
-	var list_types = ["Quantitative", "Qualitative"];
+	var list_types = ["Discret", "Continuous"];
 	
 	for(var i=0; i<list_types.length; i++){
 		if(type==list_types[i]){
@@ -153,20 +153,20 @@ function update_method_button(type){
 		}
 	}
 }
-/// Action from Quantitative/Qualitative button
+/// Action from Discret/Continuous button
 $(function() {
-	///  ACTION FROM BUTTON QUANTITATIVE
-	$("#button_Quantitative").click(function () {
-		update_method_button("Quantitative"); //update the active type of new attribute
-		$("#form_quali").fadeOut(500);
-		$("#form_quanti").fadeIn(500);
+	///  ACTION FROM BUTTON DISCRET
+	$("#button_discret").click(function () {
+		update_method_button("Discret"); //update the active type of new attribute
+		$("#form_continuous").fadeOut(500);
+		$("#form_discret").fadeIn(500);
 		window.scrollBy(0, 500);
 	});
-	///  ACTION FROM BUTTON QUALITATIVE
-	$("#button_Qualitative").click(function () {
-		update_method_button("Qualitative"); //update the active type of new attribute
-		$("#form_quanti").fadeOut(500);
-		$("#form_quali").fadeIn(500);
+	///  ACTION FROM BUTTON CONTINUOUS
+	$("#button_continuous").click(function () {
+		update_method_button("Continuous"); //update the active type of new attribute
+		$("#form_discret").fadeOut(500);
+		$("#form_continuous").fadeIn(500);
 		window.scrollBy(0, 500);
 	});
 });
