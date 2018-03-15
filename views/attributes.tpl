@@ -26,7 +26,7 @@
 	
 	<div id="button_type" style="text-align:center;">
 		<button type="button" class="btn btn-default btn-lg" id="button_Discret">Discret</button>
-		<button type="button" class="btn btn-default btn-lg" id="button_Continuous">Continuous</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_Cont">Continuous</button>
 	</div>
 	
     <!------------ FORM FOR A DISCRET PROBLEM ------------>
@@ -141,7 +141,7 @@ del_value_med.addEventListener('click', function() {
 });
 /// Function that manages the influence of the "button_type" buttons (Continuous/Discret) (just the design : green/white)
 function update_method_button(type){
-	var list_types = ["Discret", "Continuous"];
+	var list_types = ["Discret", "Cont"];
 	
 	for(var i=0; i<list_types.length; i++){
 		if(type==list_types[i]){
@@ -163,7 +163,7 @@ $(function() {
 		window.scrollBy(0, 500);
 	});
 	///  ACTION FROM BUTTON CONTINUOUS
-	$("#button_Continuous").click(function () {
+	$("#button_Cont").click(function () {
 		update_method_button("Continuous"); //update the active type of new attribute
 		$("#form_discret").fadeOut(500);
 		$("#form_continuous").fadeIn(500);
@@ -488,8 +488,8 @@ $(function() {
 			$('#att_mode_quanti').prop('checked', false);
 			
 			$("#form_quanti").fadeOut(500);
-			$("#button_Quantitative").removeClass('btn-success');
-			$("#button_Quantitative").addClass('btn-default');	
+			$("#button_Discret").removeClass('btn-success');
+			$("#button_Cont").addClass('btn-default');	
 		}
 	});
 	
@@ -577,8 +577,8 @@ $(function() {
 				lists[longueur-1].parentNode.removeChild(lists[longueur-1]);
 			};
 			$("#form_quali").fadeOut(500);
-			$("#button_Qualitative").removeClass('btn-success');
-			$("#button_Qualitative").addClass('btn-default');			
+			$("#button_Discret").removeClass('btn-success');
+			$("#button_Cont").addClass('btn-default');			
 		}
 	});
 });
