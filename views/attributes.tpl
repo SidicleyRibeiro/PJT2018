@@ -25,12 +25,12 @@
     <h2> Add a new problem: </h2>
 	
 	<div id="button_type" style="text-align:center;">
-		<button type="button" class="btn btn-default btn-lg" id="button_Discret">Discret</button>
-		<button type="button" class="btn btn-default btn-lg" id="button_Cont">Continuous</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_disc">Discret</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_cont">Continuous</button>
 	</div>
 	
     <!------------ FORM FOR A DISCRET PROBLEM ------------>
-	<div id="form_discret">
+	<div id="form_disc">
 		<div class="form-group">
 			<label for="problem_discret">I would like to know the probability of...:</label>
 			<input type="text" class="form-control" id="problem_discret" placeholder="Example: The sucess of my company in France">
@@ -65,7 +65,7 @@
 	</div>
 	
 	<!------------ FORM FOR A CONTINUOUS PROBLEM ------------>
-	<div id="form_continuous">
+	<div id="form_conti">
 		<div class="form-group">
 			<label for="problem_continuous">I would like to assess the probability distribuition of...:</label>
 			<input type="text" class="form-control" id="problem_continuous" placeholder="Example: the profit of my company in 2020">
@@ -113,8 +113,8 @@
 
 <script>
 //First we hide the attributes creation forms, and we highlight the "Manage" tab
-$("#form_discret").hide();
-$("#form_continuous").hide();
+$("#form_disc").hide();
+$("#form_conti").hide();
 $('li.manage').addClass("active");
 /////////////////////////////////////////////////////////////////////////////////////////
 // Fonctions pour ajouter/supprimer des zones de texte pour les valeurs intermédiaires //
@@ -141,7 +141,7 @@ del_value_med.addEventListener('click', function() {
 });
 /// Function that manages the influence of the "button_type" buttons (Continuous/Discret) (just the design : green/white)
 function update_method_button(type){
-	var list_types = ["Discret", "Cont"];
+	var list_types = ["Discret", "Continuous"];
 	
 	for(var i=0; i<list_types.length; i++){
 		if(type==list_types[i]){
@@ -156,17 +156,17 @@ function update_method_button(type){
 /// Action from Discret/Continuous button
 $(function() {
 	///  ACTION FROM BUTTON DISCRET
-	$("#button_Discret").click(function () {
+	$("#button_disc").click(function () {
 		update_method_button("Discret"); //update the active type of new attribute
-		$("#form_continuous").fadeOut(500);
-		$("#form_discret").fadeIn(500);
+		$("#form_conti").fadeOut(500);
+		$("#form_disc").fadeIn(500);
 		window.scrollBy(0, 500);
 	});
 	///  ACTION FROM BUTTON CONTINUOUS
-	$("#button_Cont").click(function () {
+	$("#button_cont").click(function () {
 		update_method_button("Continuous"); //update the active type of new attribute
-		$("#form_discret").fadeOut(500);
-		$("#form_continuous").fadeIn(500);
+		$("#form_disc").fadeOut(500);
+		$("#form_conti").fadeIn(500);
 		window.scrollBy(0, 500);
 	});
 });
