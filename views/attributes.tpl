@@ -50,7 +50,7 @@
 		</div>-->
 		
 		<div class="form-group">
-			<label for="mathod_discret">Method:</label>
+			<label for="method_discret">Method:</label>
 			<select class="form-control" id="method_discret">
 				<option value="PW">Probability Wheel</option>
 				<option value="PARIS">Choice between bets</option>
