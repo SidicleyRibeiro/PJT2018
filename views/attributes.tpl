@@ -1,16 +1,16 @@
-%include('header_init.tpl', heading='Manage your attributes')
+%include('header_init.tpl', heading='Problem Statement')
 
-<h2>List of current attributes:</h2>
+<h2>List of current problems:</h2>
 <table class="table table-striped">
     <thead>
         <tr>
             <th style='width:50px;'>State</th>
 			<th>Type</th>
-            <th>Attribute name</th>
-            <th>Unit</th>
-            <th>Values</th>
+            <th>Problem Discription</th>
+            <!--<th>Unit</th>-->
+            <!--<th>Values</th>-->
             <th>Method</th>
-            <th>Mode</th>
+            <!--<th>Mode</th>-->
             <th>Edit</th>
             <th><button type="button" class="btn btn-danger del_simu"><img src='/static/img/delete.ico' style='width:16px;'/></button></th>
         </tr>
@@ -21,19 +21,19 @@
 
 <br />
 
-<div id="add_attribute" style="width:50%;margin-left:25%;margin-bottom:25px;">
-    <h2> Add a new attribute: </h2>
+<div id="add_problem" style="width:50%;margin-left:25%;margin-bottom:25px;">
+    <h2> Add a new problem: </h2>
 	
 	<div id="button_type" style="text-align:center;">
-		<button type="button" class="btn btn-default btn-lg" id="button_Quantitative">Quantitative</button>
-		<button type="button" class="btn btn-default btn-lg" id="button_Qualitative">Qualitative</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_Discret">Discret</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_Continuous">Continuous</button>
 	</div>
 	
-    <!------------ FORM FOR A QUANTITATIVE ATTRIBUTE ------------>
-	<div id="form_quanti">
+    <!------------ FORM FOR A DISCRET PROBLEM ------------>
+	<div id="form_discret">
 		<div class="form-group">
-			<label for="att_name_quanti">Name:</label>
-			<input type="text" class="form-control" id="att_name_quanti" placeholder="Name">
+			<label for="problem_discret">I would like to know the probability of?:</label>
+			<input type="text" class="form-control" id="problem_discret" placeholder="Example: The sucess of my company in France">
 		</div>
 
 		<div class="form-group">
