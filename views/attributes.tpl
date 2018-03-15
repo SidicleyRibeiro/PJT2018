@@ -4,7 +4,7 @@
    <body>
       <p>Examples: write different examples</p>
       <div class="form-group">
-			<label for="prob_statement">I would like to assess the probability of...</label>
+			<label for="att_name_quanti">I would like to assess the probability of...</label>
 			<input type="text" class="form-control" id="prob_statement" placeholder="Problem Statement"/input>
 		</div>
       
@@ -19,7 +19,7 @@
 	</div>
 	<br/>
 	</div style="text-align:center;">
-		<button type="submit" class="btn btn-default" id="submit">Submit</button>
+		<button type="submit" class="btn btn-success" id="submit">Submit</button>
 	</div>
 	
 </div>
@@ -48,12 +48,12 @@ function update_method_button(type){
 
 /// Action from Quantitative/Qualitative button
 $(function() {
-	///  ACTION FROM BUTTON WHEEN
+	///  ACTION FROM BUTTON WHEEL
 	$("#button_Wheel").click(function () {
 		update_method_button("Wheel"); //update the active type of new attribute
 	});
 
-	///  ACTION FROM BUTTON BET
+	///  ACTION FROM BUTTON PARIS
 	$("#button_Paris").click(function () {
 		update_method_button("Paris"); //update the active type of new attribute
 	});
@@ -70,7 +70,7 @@ $(function() {
 		edit_mode = false,
 		edited_attribute=0;
 		
-	// When you click on the RED BIN // Delete the wole session
+	// When you click on the RED BIN // Delete the whole session
 	$('.del_simu').click(function() {
 		if (confirm("You are about to delete all the attributes and their assessments.\nAre you sure ?") == false) {
 			return
@@ -82,19 +82,13 @@ $(function() {
 	// Create a new session if there is no existing one yet
 	if (!assess_session) {
 		assess_session = {
-			"attributes": [],
-			"k_calculus": [{
+			"PROBLEM": [],
+			"proba_calculus": [{
 				"method": "multiplicative",
 				"active": "false",
-				"k": [],
-				"GK": null,
-				"GU": null
 			}, {
 				"method": "multilinear",
 				"active": "false",
-				"k": [],
-				"GK": null,
-				"GU": null
 			}],
 			"settings": {
 				"decimals_equations": 3,
@@ -122,82 +116,7 @@ $(function() {
 		return false;
 	};
 	
-	// Function to know if at least one element of val_list is empty
-	function isOneValueOfTheListEmpty(val_list){
-		var list_len = val_list.length;
-		for (var i=0; i<list_len; i++) {
-			if(val_list[i] == ""){return true}
-		};
-		return false;
-	};
-	
-	// Function to know if each typed value is different from the others
-	function areAllValuesDifferent(val_list, val_min, val_max){
-		var list_len = val_list.length;
-		for (var i=0; i<list_len; i++) {
-			if (val_list[i] == val_min || val_list[i] == val_max){
-				return false;
-			};
-			for (var j=0; j<list_len; j++) {
-				if(val_list[i] == val_list[j] && i!=j){
-					return false;
-				}
-			}
-		};
-		return true;
-	};
-	
-	// Function to check if there is an underscore in the typed values
-	function isThereUnderscore(val_list, val_min, val_max){
-		var list_len = val_list.length;
-		for (var i=0; i<list_len; i++) {
-			if (val_list[i].search("_")!=-1){
-				return false;
-			};
-		};
-		if (val_min.search("_")!=-1 || val_max.search("_")!=-1){
-			return false;
-		};
-		return true;
-	};
-	
-	// Function to check if there is a hyphen in the typed values
-	function isThereHyphen(val_list, val_min, val_max){
-		var list_len = val_list.length;
-		for (var i=0; i<list_len; i++) {
-			if (val_list[i].search("-")!=-1){
-				return false;
-			};
-		};
-		if (val_min.search("-")!=-1 || val_max.search("-")!=-1){
-			return false;
-		};
-		return true;
-	};
-	
-	// Function to check if there is a blank space in the typed values
-	function isThereBlankSpace(val_list, val_min, val_max){
-		var list_len = val_list.length;
-		for (var i=0; i<list_len; i++) {
-			if (val_list[i].search(" ")!=-1){
-				return false;
-			};
-		};
-		if (val_min.search(" ")!=-1 || val_max.search(" ")!=-1){
-			return false;
-		};
-		return true;
-	};
-
-	// Function to change the property of a checked box
-	function checked_button_clicked(element) {
-		var assess_session = JSON.parse(localStorage.getItem("assess_session")),
-			checked = $(element).prop("checked"),
-			i = $(element).val();
-
-		assess_session.attributes[i].checked = checked; // we modify the propriety
-		localStorage.setItem("assess_session", JSON.stringify(assess_session)); // we update the assess_session storage
-	}
+	display: assess_session.attributes.length
 
 	// Function to update the attributes table
 	function sync_table() {
