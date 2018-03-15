@@ -115,8 +115,6 @@ $(function() {
 		};
 		return false;
 	};
-	
-	display: assess_session.attributes.length;
 
 	// Function to update the attributes table
 	function sync_table() {
