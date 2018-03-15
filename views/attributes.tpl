@@ -7,8 +7,8 @@
             <th style='width:50px;'>State</th>
 			<th>Type</th>
             <th>Problem Discription</th>
-            <!--<th>Unit</th>-->
-            <!--<th>Values</th>-->
+            <th>Unit</th>
+            <th>Values</th>
             <th>Method</th>
             <!--<th>Mode</th>-->
             <th>Edit</th>
@@ -32,11 +32,11 @@
     <!------------ FORM FOR A DISCRET PROBLEM ------------>
 	<div id="form_discret">
 		<div class="form-group">
-			<label for="problem_discret">I would like to know the probability of?:</label>
+			<label for="problem_discret">I would like to know the probability of...:</label>
 			<input type="text" class="form-control" id="problem_discret" placeholder="Example: The sucess of my company in France">
 		</div>
 
-		<div class="form-group">
+		<!--<div class="form-group">
 			<label for="att_unit_quanti">Unit:</label>
 			<input type="text" class="form-control" id="att_unit_quanti" placeholder="Unit">
 		</div>
@@ -47,37 +47,48 @@
 		<div class="form-group">
 			<label for="att_value_max_quanti">Max value:</label>
 			<input type="text" class="form-control" id="att_value_max_quanti" placeholder="Value">
-		</div>
+		</div>-->
+		
 		<div class="form-group">
-			<label for="att_method_quanti">Method:</label>
-			<select class="form-control" id="att_method_quanti">
-				<option value="PE">Probability Equivalence</option>
-				<option value="CE_Constant_Prob">Certainty Equivalence - Constant Probability</option>
-				<option value="CE_Variable_Prob">Certainty Equivalence - Variable Probability</option>
+			<label for="mathod_discret">Method:</label>
+			<select class="form-control" id="method_discret">
+				<option value="PW">Probability Wheel</option>
+				<option value="PARIS">Choice between bets</option>
 				<option value="LE">Lottery Equivalence</option>
 			</select>
 		</div>
-		<div class="checkbox">
+		<!--<div class="checkbox">
 			<label><input name="mode" type="checkbox" id="att_mode_quanti" placeholder="Mode"> The min value is preferred (decreasing utility function)</label>
-		</div>
+		</div>-->
 
-		<button type="submit" class="btn btn-success" id="submit_quanti">Submit</button>
+		<button type="submit" class="btn btn-success" id="submit_discret">Submit</button>
 	</div>
 	
-	<!------------ FORM FOR A QUALITATIVE ATTRIBUTE ------------>
-	<div id="form_quali">
+	<!------------ FORM FOR A CONTINUOUS PROBLEM ------------>
+	<div id="form_continuous">
 		<div class="form-group">
-			<label for="att_name_quali">Name:</label>
-			<input type="text" class="form-control" id="att_name_quali" placeholder="Name">
+			<label for="problem_continuous">I would like to assess the probability distribuition of...:</label>
+			<input type="text" class="form-control" id="problem_continuous" placeholder="Example: the profit of my company in 2020">
 		</div>
 		
-		<h3> Please rank the values by order of preference: </h3>
-
+		<div class="form-group">
+			<label for="unit_continuous">Unit:</label>
+			<input type="text" class="form-control" id="unit_continuous" placeholder="Exemples: Euros, Dollars, Bitcoins..">
+		</div>
+		<div class="form-group">
+			<label for="min_value_continuous">Minimum value:</label>
+			<input type="text" class="form-control" id="min_value_continuous" placeholder="Value">
+		</div>
+		<div class="form-group">
+			<label for="max_value_continuous">Maximum value:</label>
+			<input type="text" class="form-control" id="max_value_continuous" placeholder="Value">
+		</div>-->
+		
+		<!--<h3> Please rank the values by order of preference: </h3>
 		<div class="form-group">
 			<label for="att_value_min_quali">Least preferred value:</label>
 			<input type="text" class="form-control" id="att_value_min_quali" placeholder="Worst value">
 		</div>
-		
 		<div class="form-group">
 			<label for="att_value_med_quali">Intermediate value(s):</label>
 				<input type="button" class="btn btn-default" id="add_value_med_quali" value="Add an item"/>   
@@ -86,11 +97,10 @@
 					<li class="col-auto"><input type="text" class="form-control col-auto" id="att_value_med_quali_1" placeholder='Intermediate Value 1'/></li>
 				</ol>
 		</div>
-		
 		<div class="form-group">
 			<label for="att_value_max_quali">Most preferred value:</label>
 			<input type="text" class="form-control" id="att_value_max_quali" placeholder="Best value">
-		</div>
+		</div>-->
 			
 		<button type="submit" class="btn btn-success" id="submit_quali">Submit</button>
 	</div>
@@ -103,8 +113,8 @@
 
 <script>
 //First we hide the attributes creation forms, and we highlight the "Manage" tab
-$("#form_quanti").hide();
-$("#form_quali").hide();
+$("#form_discret").hide();
+$("#form_continuous").hide();
 $('li.manage').addClass("active");
 /////////////////////////////////////////////////////////////////////////////////////////
 // Fonctions pour ajouter/supprimer des zones de texte pour les valeurs intermédiaires //
