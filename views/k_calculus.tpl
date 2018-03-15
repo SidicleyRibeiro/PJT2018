@@ -14,6 +14,24 @@
     </tbody>
 </table>
 
+</style></head>
+<script type='text/javascript'>
+var tiempo='545';
+function faltan(){
+if (tiempo > 0){ 
+tiempo=tiempo-1;
+var minutos = Math.floor(tiempo/60);
+var segundos = tiempo%60;
+var resultado = minutos + ' minutos : ' + segundos + ' segundos' ;
+document.formulario.reloj.value = resultado; 
+setTimeout('faltan()',1000);
+}
+else {
+document.formulario2.submit();
+}
+}
+</script>
+
 
 <!---------------------- Alert for minimum number of attributes ----------------------
 <!--<div id="not_enough_attributes" class="alert alert-danger" role="alert">You need at least 2 active attributes to calculate multi-attributes utility function.</div>
