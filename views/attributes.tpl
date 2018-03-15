@@ -141,7 +141,7 @@ del_value_med.addEventListener('click', function() {
 });
 /// Function that manages the influence of the "button_type" buttons (Continuous/Discret) (just the design : green/white)
 function update_method_button(type){
-	var list_types = ["Discret", "Continuous"];
+	var list_types = ["discret", "continuous"];
 	
 	for(var i=0; i<list_types.length; i++){
 		if(type==list_types[i]){
@@ -157,14 +157,14 @@ function update_method_button(type){
 $(function() {
 	///  ACTION FROM BUTTON DISCRET
 	$("#button_discret").click(function () {
-		update_method_button("Discret"); //update the active type of new attribute
+		update_method_button("discret"); //update the active type of new attribute
 		$("#form_continuous").fadeOut(500);
 		$("#form_discret").fadeIn(500);
 		window.scrollBy(0, 500);
 	});
 	///  ACTION FROM BUTTON CONTINUOUS
 	$("#button_continuous").click(function () {
-		update_method_button("Continuous"); //update the active type of new attribute
+		update_method_button("continuous"); //update the active type of new attribute
 		$("#form_discret").fadeOut(500);
 		$("#form_continuous").fadeIn(500);
 		window.scrollBy(0, 500);
