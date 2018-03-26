@@ -51,3 +51,5 @@
 	</div>
 </div>
 
+%include('header_end.tpl')
+%include('js.tpl')
