@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 7')
+%include('header_init.tpl', heading='State your problem 8')
 
 <h2>List of current problems:</h2>
 <table class="table table-striped">
@@ -28,13 +28,14 @@
 		<button type="button" class="btn btn-default btn-lg" id="button_continuous">CONTINUOUS</button>
 	</div>
 	
+<br />
+
 <!------------ FORM FOR A DISCRET PROBLEM ------------>
 	
 	<div id="form_discret">
 		<div class="form-group">
 			<label for="problem_discret">I'd like to know the probability of:</label>
-			<input type="text" class="form-control" id="problem_discret" placeholder="Example: The success of my company 
-			in France">
+			<input type="text" class="form-control" id="problem_discret" placeholder="Example: The success of my company in France">
 		</div>
 		
 		<div class="form-group">
@@ -53,10 +54,23 @@
 	
 	<div id="form_continuous">
 		<div class="form-group">
-			<label for="problem_continuous">Name:</label>
-			<input type="text" class="form-control" id="problem_continuous" placeholder="Temporaire">
+			<label for="problem_continuous">I would like to assess the probability distribuition of:</label>
+			<input type="text" class="form-control" id="problem_continuous" placeholder="Example: the profit of my company in 2020">
 		</div>
 		
+		<div class="form-group">
+			<label for="unit_continuous">Unit:</label>
+			<input type="text" class="form-control" id="unit_continuous" placeholder="Exemples: Euros, Dollars, Bitcoins..">
+		</div>
+		<div class="form-group">
+			<label for="min_value_continuous">Minimum value:</label>
+			<input type="text" class="form-control" id="min_value_continuous" placeholder="Value">
+		</div>
+		<div class="form-group">
+			<label for="max_value_continuous">Maximum value:</label>
+			<input type="text" class="form-control" id="max_value_continuous" placeholder="Value">
+		</div>
+	
 		<button type="submit" class="btn btn-success" id="submit_continuous">Submit</button>
 	</div>
 </div>
