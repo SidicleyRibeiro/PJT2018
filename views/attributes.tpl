@@ -53,3 +53,12 @@
 
 %include('header_end.tpl')
 %include('js.tpl')
+
+<!----------------------------------------------   VALIDÉ JUSQU'ICI :D    --------------------------------------------------->
+
+<script>
+
+//Here we're going to try to hide and show whatever we want
+
+$("#form_uno").hide();
+$("#form_dos").hide();
