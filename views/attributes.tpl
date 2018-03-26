@@ -14,6 +14,38 @@
         <th><button type="button" class="btn btn-danger del_simu"><img src='/static/img/delete.ico' style='width:16px;'/></button></th>
       </tr>
   </thead>
-  <tbody id="table_attributes">
+  <tbody id="table_problem">
   </tbody>
 </table>
+
+<br />
+
+<div id="add_problem" style="width:50%;margin-left:25%;margin-bottom:25px;">
+	<h2> Add new problem: </h2>
+	
+	<div id="button_type" style="text-align:center;">
+		<button type="button" class="btn btn-default btn-lg" id="button_1">Problem1</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_2">Problem2</button>
+	</div>
+	
+<!------------ FORM FOR A DISCRET PROBLEM ------------>
+	
+	<div id="form_uno">
+		<div class="form-group">
+			<label for="problem_uno">Name:</label>
+			<input type="text" class="form-control" id="problem_uno" placeholder="Temporaire">
+		</div>
+		
+		<button type="submit" class="btn btn-success" id="submit_uno">Submit</button>
+	</div>
+	
+<!------------ FORM FOR A CONTINUOUS PROBLEM ------------>
+	
+	<div id="form_dos">
+		<div class="form-group">
+			<label for="problem_dos">Name:</label>
+			<input type="text" class="form-control" id="problem_dos" placeholder="Temporaire">
+		</div>
+		
+		<button type="submit" class="btn btn-success" id="submit_dos">Submit</button>
+	</div>
