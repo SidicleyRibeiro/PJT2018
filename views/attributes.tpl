@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem4')
+%include('header_init.tpl', heading='State your problem5')
 
 <h2>List of current problems:</h2>
 <table class="table table-striped">
@@ -24,30 +24,30 @@
 	<h2> Add new problem: </h2>
 	
 	<div id="button_type" style="text-align:center;">
-		<button type="button" class="btn btn-default btn-lg" id="button_1">Problem1</button>
-		<button type="button" class="btn btn-default btn-lg" id="button_2">Problem2</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_discret">DISCRET</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_continuous">CONTINUOUS</button>
 	</div>
 	
 <!------------ FORM FOR A DISCRET PROBLEM ------------>
 	
-	<div id="form_uno">
+	<div id="form_discret">
 		<div class="form-group">
-			<label for="problem_uno">Name:</label>
-			<input type="text" class="form-control" id="problem_uno" placeholder="Temporaire">
+			<label for="problem_discret">Name:</label>
+			<input type="text" class="form-control" id="problem_discret" placeholder="Temporaire">
 		</div>
 		
-		<button type="submit" class="btn btn-success" id="submit_uno">Submit</button>
+		<button type="submit" class="btn btn-success" id="submit_discret">Submit</button>
 	</div>
 	
 <!------------ FORM FOR A CONTINUOUS PROBLEM ------------>
 	
-	<div id="form_dos">
+	<div id="form_continuous">
 		<div class="form-group">
-			<label for="problem_dos">Name:</label>
-			<input type="text" class="form-control" id="problem_dos" placeholder="Temporaire">
+			<label for="problem_continuous">Name:</label>
+			<input type="text" class="form-control" id="problem_continuous" placeholder="Temporaire">
 		</div>
 		
-		<button type="submit" class="btn btn-success" id="submit_dos">Submit</button>
+		<button type="submit" class="btn btn-success" id="submit_continuous">Submit</button>
 	</div>
 </div>
 
@@ -60,16 +60,16 @@
 
 //Here we're going to try to hide and show whatever we want
 
-$("#form_uno").hide();
-$("#form_dos").hide();
+$("#form_discret").hide();
+$("#form_continuous").hide();
 $('li.manage').addClass("active"); //CHANGER LE NOM APRES
 
-//Here we're going to make the #!%$ buttons work:
+//Here we're going to make the beloveds buttons work:
 
 //First, the function for changing button's color:
 
 function update_problem_button(type){
-	var list_types = ["1","2"];
+	var list_types = ["discret","continuous"];
 	
 	for(var i=0; i<list_types.length; i++){
 		if(type==list_types[i]){
@@ -86,19 +86,19 @@ function update_problem_button(type){
 
 $(function() {
 
-	//FIRST BUTTON:
-	$("#button_1").click(function () {
-		update_problem_button("1");
-		$("#form_uno").fadeOut(500);
-		$("#form_dos").fadeIn(500);
+	//DISCRET BUTTON:
+	$("#button_discret").click(function () {
+		update_problem_button("discret");
+		$("#form_discret").fadeOut(500);
+		$("#form_continuous").fadeIn(500);
 		window.scrollBy(0, 500);
 	});
 	
-	//SECOND BUTTON:
-	$("#button_2").click(function () {
-		update_problem_button("2");
-		$("#form_dos").fadeOut(500);
-		$("#form_uno").fadeIn(500);
+	//CONTINUOUS BUTTON:
+	$("#button_continuous").click(function () {
+		update_problem_button("continuous");
+		$("#form_continuous").fadeOut(500);
+		$("#form_discret").fadeIn(500);
 		window.scrollBy(0, 500);
 	});
 });
