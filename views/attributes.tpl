@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='Problem Statement2')
+%include('header_init.tpl', heading='Problem Statement3')
 
 <h2>List of current problems:</h2>
 <table class="table table-striped">
@@ -156,14 +156,14 @@ function update_method_button(type){
 /// Action from Discret/Continuous button
 $(function() {
 	///  ACTION FROM BUTTON DISCRET
-	$("#button_disc").click(function () {
+	$("#button_Discret").click(function () {
 		update_method_button("Discret"); //update the active type of new attribute
 		$("#form_conti").fadeOut(500);
 		$("#form_disc").fadeIn(500);
 		window.scrollBy(0, 500);
 	});
 	///  ACTION FROM BUTTON CONTINUOUS
-	$("#button_cont").click(function () {
+	$("#button_Continuous").click(function () {
 		update_method_button("Continuous"); //update the active type of new attribute
 		$("#form_disc").fadeOut(500);
 		$("#form_conti").fadeIn(500);
