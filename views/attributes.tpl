@@ -25,8 +25,8 @@
     <h2> Add a new problem: </h2>
 	
 	<div id="button_type" style="text-align:center;">
-		<button type="button" class="btn btn-default btn-lg" id="button_disc">Discret</button>
-		<button type="button" class="btn btn-default btn-lg" id="button_cont">Continuous</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_Discret">Discret</button>
+		<button type="button" class="btn btn-default btn-lg" id="button_Continuous">Continuous</button>
 	</div>
 	
     <!------------ FORM FOR A DISCRET PROBLEM ------------>
@@ -61,7 +61,7 @@
 			<label><input name="mode" type="checkbox" id="att_mode_quanti" placeholder="Mode"> The min value is preferred (decreasing utility function)</label>
 		</div>-->
 
-		<button type="submit" class="btn btn-success" id="submit_discret">Submit</button>
+		<button type="submit" class="btn btn-success" id="submit_disc">Submit</button>
 	</div>
 	
 	<!------------ FORM FOR A CONTINUOUS PROBLEM ------------>
@@ -102,7 +102,7 @@
 			<input type="text" class="form-control" id="att_value_max_quali" placeholder="Best value">
 		</div>-->
 			
-		<button type="submit" class="btn btn-success" id="submit_quali">Submit</button>
+		<button type="submit" class="btn btn-success" id="submit_conti">Submit</button>
 	</div>
 	
 	
@@ -115,7 +115,7 @@
 //First we hide the attributes creation forms, and we highlight the "Manage" tab
 $("#form_disc").hide();
 $("#form_conti").hide();
-$('li.manage').addClass("active");
+<!--$('li.manage').addClass("active");-->
 /////////////////////////////////////////////////////////////////////////////////////////
 // Fonctions pour ajouter/supprimer des zones de texte pour les valeurs intermédiaires //
 /////////////////////////////////////////////////////////////////////////////////////////
