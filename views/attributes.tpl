@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem2')
+%include('header_init.tpl', heading='State your problem3')
 
 <h2>List of current problems:</h2>
 <table class="table table-striped">
@@ -62,5 +62,37 @@
 
 $("#form_uno").hide();
 $("#form_dos").hide();
+$('li.manage').addClass("active"); //CHANGER LE NOM APRES
+
+//Here we're going to make the #!%$ buttons work:
+
+//First, the function for changing button's color:
+
+function update_problem_button(type){
+	var list_types = ["1","2"];
+	
+	for(var i=0; i<list_types.length; i++){
+		if(type==list_types[i]){
+			$("#button_"+list_types[i]).removeClass('btn-default');
+			$("#button_"+list_types[i]).addClass('btn-success');
+		} else {
+			$("#button_"+list_types[i]).removeClass('btn-success');
+			$("#button_"+list_types[i]).addClass('btn-default');
+		}
+	}
+}
+
+//Now, we decide what's going to happen when clicking:
+
+$(function() {
+
+	//FIRST BUTTON:
+	$("#button_1").click(function () {
+		update_problem_button("1");
+		$("#form_uno").fadeOut(500);
+		$("#form_dos").fadeIn(500);
+		window.scrollBy(0, 500);
+	});
+});
 
 </script>
