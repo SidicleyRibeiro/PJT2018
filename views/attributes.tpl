@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 6')
+%include('header_init.tpl', heading='State your problem 7')
 
 <h2>List of current problems:</h2>
 <table class="table table-striped">
@@ -97,16 +97,16 @@ $(function() {
 	//DISCRET BUTTON:
 	$("#button_discret").click(function () {
 		update_problem_button("discret");
-		$("#form_discret").fadeOut(500);
-		$("#form_continuous").fadeIn(500);
+		$("#form_continuous").fadeOut(500);
+		$("#form_discret").fadeIn(500);
 		window.scrollBy(0, 500);
 	});
 	
 	//CONTINUOUS BUTTON:
 	$("#button_continuous").click(function () {
 		update_problem_button("continuous");
-		$("#form_continuous").fadeOut(500);
-		$("#form_discret").fadeIn(500);
+		$("#form_discret").fadeOut(500);
+		$("#form_continuous").fadeIn(500);
 		window.scrollBy(0, 500);
 	});
 });
