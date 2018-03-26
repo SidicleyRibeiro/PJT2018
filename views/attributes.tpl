@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='Problem Statement3')
+%include('header_init.tpl', heading='Problem Statement4')
 
 <h2>List of current problems:</h2>
 <table class="table table-striped">
@@ -119,6 +119,7 @@ $("#form_conti").hide();
 /////////////////////////////////////////////////////////////////////////////////////////
 // Fonctions pour ajouter/supprimer des zones de texte pour les valeurs intermédiaires //
 /////////////////////////////////////////////////////////////////////////////////////////
+<!--
 var list_med_values = document.getElementById('list_med_values_quali'),
 	lists = list_med_values.getElementsByTagName('li'),
 	add_value_med = document.getElementById('add_value_med_quali'),
@@ -139,6 +140,7 @@ del_value_med.addEventListener('click', function() {
 		alert("Please put at least one medium value for the attribute "+$('#att_name').val());
 	};
 });
+-->
 /// Function that manages the influence of the "button_type" buttons (Continuous/Discret) (just the design : green/white)
 function update_method_button(type){
 	var list_types = ["Discret", "Continuous"];
