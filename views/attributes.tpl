@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem5')
+%include('header_init.tpl', heading='State your problem 6')
 
 <h2>List of current problems:</h2>
 <table class="table table-striped">
@@ -32,8 +32,18 @@
 	
 	<div id="form_discret">
 		<div class="form-group">
-			<label for="problem_discret">Name:</label>
-			<input type="text" class="form-control" id="problem_discret" placeholder="Temporaire">
+			<label for="problem_discret">I'd like to know the probability of:</label>
+			<input type="text" class="form-control" id="problem_discret" placeholder="Example: The success of my company 
+			in France">
+		</div>
+		
+		<div class="form-group">
+			<label for="method_discret">Method:</label>
+			<select class="form-control" id="method_discret">
+				<option value="PW">Probability Wheel</option>
+				<option value="PARIS">Choice between bets</option>
+				<option value="LE">Lottery Equivalence</option>
+			</select>
 		</div>
 		
 		<button type="submit" class="btn btn-success" id="submit_discret">Submit</button>
@@ -53,8 +63,6 @@
 
 %include('header_end.tpl')
 %include('js.tpl')
-
-<!----------------------------------------------   VALIDÉ JUSQU'ICI :D    --------------------------------------------------->
 
 <script>
 
@@ -103,4 +111,7 @@ $(function() {
 	});
 });
 
+<!----------------------------------------------   VALIDÉ JUSQU'ICI :D    --------------------------------------------------->
+
 </script>
+
