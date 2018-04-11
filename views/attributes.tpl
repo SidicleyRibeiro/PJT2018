@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 13')
+%include('header_init.tpl', heading='State your problem 15')
 
 <h2>List of current problems:</h2>
 <table class="table table-striped">
@@ -84,7 +84,7 @@
 
 $("#form_discret").hide();
 $("#form_continuous").hide();
-//$('li.manage').addClass("active"); //CHANGER LE NOM APRES
+$('li.manage').addClass("active"); //CHANGER LE NOM APRES
 
 //Here we're going to make the beloveds buttons work:
 
