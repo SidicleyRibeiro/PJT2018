@@ -126,7 +126,7 @@ $(function() {
 });
 
 <!----------------------------------------------   VALIDÉ JUSQU'ICI :D    --------------------------------------------------->
-
+<!-----
 //This part saves the information and process it to make the assesment
 $(function() {
 	var assess_session = JSON.parse(localStorage.getItem("assess_session")), //JSON.parse gets the strings for the local storage and tranforms it into js objects.
@@ -156,7 +156,7 @@ $(function() {
 		localStorage.setItem("assess_session", JSON.stringify(assess_session)); //Here we save the sessions in the server's memory in order to avois the deleting of the information each time we close it.
 	};
 	
-
+-->
 
 </script>
 
