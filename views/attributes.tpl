@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 9')
+%include('header_init.tpl', heading='State your problem 10')
 
 <h2>List of current problems:</h2>
 <table class="table table-striped">
@@ -236,7 +236,7 @@ $(function() {
 		};
 		return true;
 	};
-
+<!--
 // Function to update the attributes table
 	function sync_table() {
 		$('#table_attributes').empty();
@@ -330,7 +330,7 @@ $(function() {
 			}
 		}
 	}
-sync_table();
+sync_table();-->
 
 </script>
 
