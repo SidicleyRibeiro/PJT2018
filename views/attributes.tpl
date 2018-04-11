@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 22')
+%include('header_init.tpl', heading='State your problem 23')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -167,7 +167,197 @@ $(function() {
 			}
 		};
 		localStorage.setItem("assess_session", JSON.stringify(assess_session));
+		
 	};
+
+/// Defines what happens when you click on the QUANTITATIVE Submit button
+	$('#submit_quanti').click(function() {
+		var name = $('#att_name_quanti').val(),
+			unit = $('#att_unit_quanti').val(),
+			val_min = parseInt($('#att_value_min_quanti').val()),
+			val_max = parseInt($('#att_value_max_quanti').val());
+		var method = "PE";
+		if ($("select option:selected").text() == "Probability Equivalence") {
+			method = "PE";
+		} else if ($("select option:selected").text() == "Lottery Equivalence") {
+			method = "LE";
+		} else if ($("select option:selected").text() == "Certainty Equivalence - Constant Probability") {
+			method = "CE_Constant_Prob";
+		} else if ($("select option:selected").text() == "Certainty Equivalence - Variable Probability") {
+			method = "CE_Variable_Prob";
+		}
+		var mode = ($('input[name=mode]').is(':checked') ? "Reversed" : "Normal");
+		
+		if (!(name || unit || val_min || val_max) || isNaN(val_min) || isNaN(val_max)) {
+			alert('Please fill correctly all the fields');
+		} else if (isAttribute(name) && (edit_mode == false)) {
+			alert ("An attribute with the same name already exists");
+		} else if (val_min > val_max) {
+			alert ("Minimum value must be inferior to maximum value");
+		} else if (val_min<0 || val_max<0 ) {
+			alert ("Values must be positive or zero");
+		} else if (isThereUnderscore([name, unit], String(val_min), String(val_max))==false) {
+			alert("Please don't write an underscore ( _ ) in your values.");
+		} else if (isThereHyphen([name, unit], String(val_min), String(val_max))==false) {
+			alert("Please don't write a hyphen ( - ) in your values.");
+		} else if (isThereBlankSpace([name, unit], String(val_min), String(val_max))==false) {
+			alert("Please don't write a blank space in your values.");
+		}
+		
+		else {
+			if (edit_mode==false) {
+				assess_session.attributes.push({
+					"type": "Quantitative",
+					"name": name,
+					'unit': unit,
+					'val_min': val_min,
+					'val_med': [
+						String(parseFloat(val_min)+.25*(parseFloat(val_max)-parseFloat(val_min))),
+						String(parseFloat(val_min)+.50*(parseFloat(val_max)-parseFloat(val_min))), //yes, it's (val_max+val_min)/2, but it looks better ^^
+						String(parseFloat(val_min)+.75*(parseFloat(val_max)-parseFloat(val_min)))
+					],
+					'val_max': val_max,
+					'method': method,
+					'mode': mode,
+					'completed': 'False',
+					'checked': true,
+					'questionnaire': {
+						'number': 0,
+						'points': {},
+						'utility': {}
+					}
+				});
+			} else {
+				if (confirm("Are you sure you want to edit the attribute? All assessements will be deleted") == true) {
+					assess_session.attributes[edited_attribute]={
+						"type": "Quantitative",
+						"name": name,
+						'unit': unit,
+						'val_min': val_min,
+						'val_med': [
+							String(parseFloat(val_min)+.25*(parseFloat(val_max)-parseFloat(val_min))),
+							String(parseFloat(val_min)+.50*(parseFloat(val_max)-parseFloat(val_min))), //yes, it's (val_max+val_min)/2, but it looks better ^^
+							String(parseFloat(val_min)+.75*(parseFloat(val_max)-parseFloat(val_min)))
+						],
+						'val_max': val_max,
+						'method': method,
+						'mode': mode,
+						'completed': 'False',
+						'checked': true,
+						'questionnaire': {
+							'number': 0,
+							'points': {},
+							'utility': {}
+						}
+					};
+				}	
+				edit_mode=false;
+				$('#add_attribute h2').text("Add a new attribute");
+			}
+			sync_table();
+			localStorage.setItem("assess_session", JSON.stringify(assess_session));
+			$('#att_name_quanti').val("");
+			$('#att_unit_quanti').val("");
+			$('#att_value_min_quanti').val("");
+			$('#att_value_max_quanti').val("");
+			$('#att_method_quanti option[value="PE"]').prop('selected', true);
+			$('#att_mode_quanti').prop('checked', false);
+			
+			$("#form_quanti").fadeOut(500);
+			$("#button_Quantitative").removeClass('btn-success');
+			$("#button_Quantitative").addClass('btn-default');	
+		}
+	});
+	
+/// Defines what happens when you click on the QUALITATIVE Submit button
+	$('#submit_quali').click(function() {
+		var name = $('#att_name_quali').val(),
+			val_min = $('#att_value_min_quali').val(),
+			nb_med_values = document.getElementById('list_med_values_quali').getElementsByTagName('li').length,
+			val_med = [],
+			val_max = $('#att_value_max_quali').val();
+			
+		for (var ii=1; ii<nb_med_values+1; ii++){
+			val_med.push($('#att_value_med_quali_'+ii).val());
+		};
+		var method = "PE";
+		
+		if (name=="" || val_min=="" || val_max=="") {
+			alert('Please fill correctly all the fields');
+		} else if (isAttribute(name) && (edit_mode == false)) {
+			alert ("An attribute with the same name already exists");
+		} else if (isOneValueOfTheListEmpty(val_med)) {
+			alert("One of your medium values is empty");
+		} else if (val_min==val_max) {
+			alert("The least preferred and most preferred values are the same");
+		} else if (areAllValuesDifferent(val_med, val_min, val_max)==false) {
+			alert("At least one of the values is appearing more than once");
+		} else if (isThereUnderscore(val_med, val_min, val_max)==false) {
+			alert("Please don't write an underscore ( _ ) in your values.\nBut you can put spaces");
+		}
+		else {
+			if (edit_mode==false) {
+				assess_session.attributes.push({
+					"type": "Qualitative",
+					"name": name,
+					'unit': '',
+					'val_min': val_min,
+					'val_med': val_med,
+					'val_max': val_max,
+					'method': method,
+					'mode': 'Normal',
+					'completed': 'False',
+					'checked': true,
+					'questionnaire': {
+						'number': 0,
+						'points': {},
+						'utility': {}
+					}
+				});
+			} else {
+				if (confirm("Are you sure you want to edit this attribute? All assessements will be deleted") == true) {
+					assess_session.attributes[edited_attribute]={
+						"type": "Qualitative",
+						"name": name,
+						'unit': '',
+						'val_min': val_min,
+						'val_med': val_med,
+						'val_max': val_max,
+						'method': method,
+						'mode': 'Normal',
+						'completed': 'False',
+						'checked': true,
+						'questionnaire': {
+							'number': 0,
+							'points': {},
+							'utility': {}
+						}
+					};
+				}
+				edit_mode=false;
+				$('#add_attribute h2').text("Add a new attribute");
+			}
+			
+			sync_table();
+			localStorage.setItem("assess_session", JSON.stringify(assess_session));
+			
+			/// On vide les zones de texte
+			$('#att_name_quali').val("");
+			$('#att_value_min_quali').val("");
+			$('#att_value_med_quali_1').val("");
+			$('#att_value_max_quali').val("");
+			
+			/// On ramène le nombre d'éléments intermédiaires à 1
+			for (var ii=val_med.length; ii>1; ii--) {
+				var longueur = document.getElementById('list_med_values_quali').getElementsByTagName('li').length;
+				lists[longueur-1].parentNode.removeChild(lists[longueur-1]);
+			};
+			$("#form_quali").fadeOut(500);
+			$("#button_Qualitative").removeClass('btn-success');
+			$("#button_Qualitative").addClass('btn-default');			
+		}
+	});
+});
 
 </script>
 </body>
