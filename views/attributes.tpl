@@ -1,5 +1,4 @@
-%include('header_init.tpl', heading='State your problem 16')
-
+%include('header_init.tpl', heading='State your problem 17')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -125,7 +124,7 @@ $(function() {
 	});
 });
 
-<!----------------------------------------------   VALIDÉ JUSQU'ICI :D    --------------------------------------------------->
+//<!----------------------------------------------   VALIDÉ JUSQU'ICI :D    --------------------------------------------------
 
 //This part saves the information and process it to make the assesment
 $(function() {
@@ -141,7 +140,7 @@ $(function() {
 		localStorage.removeItem("assess_session");
 		window.location.reload();
 	});
-
-
+	localStorage.setItem("assess_session",JSON.stringify(assess_session));
+};
 </script>
 
