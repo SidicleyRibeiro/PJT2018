@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 19')
+%include('header_init.tpl', heading='State your problem 20')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -126,24 +126,47 @@ $(function() {
 
 //<!----------------------------------------------   VALIDÉ JUSQU'ICI :D    --------------------------------------------------
 
-//This part saves the information and process it to make the assesment
 $(function() {
-	var assess_session = JSON.parse(localStorage.getItem("assess_session")), //JSON.parse gets the strings for the local storage and tranforms it into js objects.
-		edit_mode = false, 
-		edited_attribute=0; //CHANGER APRES
-	// Create a new session if there is no existing one yet - ADAPTER ENTREES APRES
+	var assess_session = JSON.parse(localStorage.getItem("assess_session")),
+		edit_mode = false,
+		edited_attribute=0;
+		
+	// When you click on the RED BIN // Delete the wole session
+	$('.del_simu').click(function() {
+		if (confirm("You are about to delete all the attributes and their assessments.\nAre you sure ?") == false) {
+			return
+		};
+		localStorage.removeItem("assess_session");
+		window.location.reload();
+	});
+	
+	// Create a new session if there is no existing one yet
 	if (!assess_session) {
 		assess_session = {
-			"problem_statements": [],
+			"attributes": [],
+			"k_calculus": [{
+				"method": "multiplicative",
+				"active": "false",
+				"k": [],
+				"GK": null,
+				"GU": null
+			}, {
+				"method": "multilinear",
+				"active": "false",
+				"k": [],
+				"GK": null,
+				"GU": null
+			}],
 			"settings": {
 				"decimals_equations": 3,
 				"decimals_dpl": 8,
+				"proba_ce": 0.30,
+				"proba_le": 0.30,
 				"language": "english",
 				"display": "trees"
 			}
 		};
-		localStorage.setItem("assess_session", JSON.stringify(assess_session)); 
-		//Here we save the sessions in the server's memory in order to avoid the deleting of the information each time we close it.
+		localStorage.setItem("assess_session", JSON.stringify(assess_session));
 	};
 
 </script>
