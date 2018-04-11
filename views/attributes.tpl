@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 29')
+%include('header_init.tpl', heading='State your problem 30')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
