@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 25')
+%include('header_init.tpl', heading='State your problem 26')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -133,7 +133,7 @@ $(function() {
 $(function() {
 	var assess_session = JSON.parse(localStorage.getItem("assess_session")),
 		edit_mode = false,
-		edited_attribute=0;
+		edited_problem_statetement=0;
 		
 	// When you click on the RED BIN // Delete the wole session
 	$('.del_simu').click(function() {
@@ -164,99 +164,50 @@ $(function() {
 /// Defines what happens when you click on the DISCRET Submit button
 	$('#submit_discret').click(function() {
 		var name = $('#problem_name_discret').val();
-		var method = "PE";
-		if ($("select option:selected").text() == "Probability Equivalence") {
-			method = "PE";
-		} else if ($("select option:selected").text() == "Lottery Equivalence") {
-			method = "LE";
-		} else if ($("select option:selected").text() == "Certainty Equivalence - Constant Probability") {
-			method = "CE_Constant_Prob";
-		} else if ($("select option:selected").text() == "Certainty Equivalence - Variable Probability") {
-			method = "CE_Variable_Prob";
+		var method = "PW";
+		if ($("select option:selected").text() == "Probability Wheel") {
+			method = "PW";
+		} else if ($("select option:selected").text() == "Gamble like method") {
+			method = "GAMBLE";
 		}
-		var mode = ($('input[name=mode]').is(':checked') ? "Reversed" : "Normal");
 		
-		if (!(name || unit || val_min || val_max) || isNaN(val_min) || isNaN(val_max)) {
-			alert('Please fill correctly all the fields');
-		} else if (isAttribute(name) && (edit_mode == false)) {
-			alert ("An attribute with the same name already exists");
-		} else if (val_min > val_max) {
-			alert ("Minimum value must be inferior to maximum value");
-		} else if (val_min<0 || val_max<0 ) {
-			alert ("Values must be positive or zero");
-		} else if (isThereUnderscore([name, unit], String(val_min), String(val_max))==false) {
-			alert("Please don't write an underscore ( _ ) in your values.");
-		} else if (isThereHyphen([name, unit], String(val_min), String(val_max))==false) {
-			alert("Please don't write a hyphen ( - ) in your values.");
-		} else if (isThereBlankSpace([name, unit], String(val_min), String(val_max))==false) {
-			alert("Please don't write a blank space in your values.");
+		if (!(name)) {
+			alert('Please fill correctly the name field');
+		} else if (isProblem(name) && (edit_mode == false)) {
+			alert ("This problem statement is already submitted");
 		}
 		
 		else {
 			if (edit_mode==false) {
-				assess_session.attributes.push({
-					"type": "Quantitative",
+				assess_session.problem_statetement.push({
+					"type": "Discret",
 					"name": name,
-					'unit': unit,
-					'val_min': val_min,
-					'val_med': [
-						String(parseFloat(val_min)+.25*(parseFloat(val_max)-parseFloat(val_min))),
-						String(parseFloat(val_min)+.50*(parseFloat(val_max)-parseFloat(val_min))), //yes, it's (val_max+val_min)/2, but it looks better ^^
-						String(parseFloat(val_min)+.75*(parseFloat(val_max)-parseFloat(val_min)))
-					],
-					'val_max': val_max,
 					'method': method,
-					'mode': mode,
 					'completed': 'False',
-					'checked': true,
-					'questionnaire': {
-						'number': 0,
-						'points': {},
-						'utility': {}
-					}
 				});
 			} else {
-				if (confirm("Are you sure you want to edit the attribute? All assessements will be deleted") == true) {
-					assess_session.attributes[edited_attribute]={
-						"type": "Quantitative",
+				if (confirm("Are you sure you want to edit the problem statement? All assessements will be deleted") == true) {
+					assess_session.problem_statetement[edited_problem_statetement]={
+						"type": "Discret",
 						"name": name,
-						'unit': unit,
-						'val_min': val_min,
-						'val_med': [
-							String(parseFloat(val_min)+.25*(parseFloat(val_max)-parseFloat(val_min))),
-							String(parseFloat(val_min)+.50*(parseFloat(val_max)-parseFloat(val_min))), //yes, it's (val_max+val_min)/2, but it looks better ^^
-							String(parseFloat(val_min)+.75*(parseFloat(val_max)-parseFloat(val_min)))
-						],
-						'val_max': val_max,
 						'method': method,
-						'mode': mode,
 						'completed': 'False',
-						'checked': true,
-						'questionnaire': {
-							'number': 0,
-							'points': {},
-							'utility': {}
-						}
 					};
 				}	
 				edit_mode=false;
-				$('#add_attribute h2').text("Add a new attribute");
+				$('#add_problem_statetement h2').text("Add a new problem statement");
 			}
 			sync_table();
 			localStorage.setItem("assess_session", JSON.stringify(assess_session));
-			$('#att_name_quanti').val("");
-			$('#att_unit_quanti').val("");
-			$('#att_value_min_quanti').val("");
-			$('#att_value_max_quanti').val("");
-			$('#att_method_quanti option[value="PE"]').prop('selected', true);
-			$('#att_mode_quanti').prop('checked', false);
+			$('#problem_name_discret').val("");
+			$('#problem_method_discret option[value="PW"]').prop('selected', true);
 			
-			$("#form_quanti").fadeOut(500);
-			$("#button_Quantitative").removeClass('btn-success');
-			$("#button_Quantitative").addClass('btn-default');	
+			$("#form_discret").fadeOut(500);
+			$("#button_discret").removeClass('btn-success');
+			$("#button_discret").addClass('btn-default');	
 		}
 	});
-	
+							//TESTED UNTIL HERE
 /// Defines what happens when you click on the QUALITATIVE Submit button
 	$('#submit_quali').click(function() {
 		var name = $('#att_name_quali').val(),
