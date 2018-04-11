@@ -41,8 +41,7 @@
 			<label for="method_discret">Method:</label>
 			<select class="form-control" id="method_discret">
 				<option value="PW">Probability Wheel</option>
-				<option value="PARIS">Choice between bets</option>
-				<option value="LE">Lottery Equivalence</option>
+				<option value="GAMBLE">Gamble like method</option>
 			</select>
 		</div>
 		
@@ -69,7 +68,12 @@
 			<label for="max_value_continuous">Maximum value:</label>
 			<input type="text" class="form-control" id="max_value_continuous" placeholder="Value">
 		</div>
-	
+		<div class="form-group">
+			<label for="method_continuous">Method:</label>
+			<select class="form-control" id="method_continuous">
+				<option value="FRACTILE">Fractile Method</option>
+			</select>
+		</div>
 		<button type="submit" class="btn btn-success" id="submit_continuous">Submit</button>
 	</div>
 </div>
@@ -157,12 +161,9 @@ $(function() {
 		
 	};
 
-/// Defines what happens when you click on the QUANTITATIVE Submit button
-	$('#submit_quanti').click(function() {
-		var name = $('#att_name_quanti').val(),
-			unit = $('#att_unit_quanti').val(),
-			val_min = parseInt($('#att_value_min_quanti').val()),
-			val_max = parseInt($('#att_value_max_quanti').val());
+/// Defines what happens when you click on the DISCRET Submit button
+	$('#submit_discret').click(function() {
+		var name = $('#problem_name_discret').val();
 		var method = "PE";
 		if ($("select option:selected").text() == "Probability Equivalence") {
 			method = "PE";
