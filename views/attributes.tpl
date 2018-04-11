@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 23')
+%include('header_init.tpl', heading='State your problem 24')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -140,28 +140,15 @@ $(function() {
 		window.location.reload();
 	});
 	
+						// ON A CHANGÉ RIEN AVANT CE POINT
+	
 	// Create a new session if there is no existing one yet
 	if (!assess_session) {
 		assess_session = {
-			"attributes": [],
-			"k_calculus": [{
-				"method": "multiplicative",
-				"active": "false",
-				"k": [],
-				"GK": null,
-				"GU": null
-			}, {
-				"method": "multilinear",
-				"active": "false",
-				"k": [],
-				"GK": null,
-				"GU": null
-			}],
+			"problem_statetement": [],  //WE'VE CHANGED THE VARIABLE "ATTRIBUTES" TO "PROBLEM_STATEMENT"
 			"settings": {
 				"decimals_equations": 3,
 				"decimals_dpl": 8,
-				"proba_ce": 0.30,
-				"proba_le": 0.30,
 				"language": "english",
 				"display": "trees"
 			}
