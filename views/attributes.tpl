@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 17')
+%include('header_init.tpl', heading='State your problem 18')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -132,14 +132,6 @@ $(function() {
 		edit_mode = false, 
 		edited_attribute=0; //CHANGER APRES
 		
-// When you click on the RED BIN // Delete the whole session
-	$('.del_simu').click(function() {
-		if (confirm("You are about to delete all the problem statements and their probability assessments.\nAre you sure ?") == false) {
-			return
-		};
-		localStorage.removeItem("assess_session");
-		window.location.reload();
-	});
 	localStorage.setItem("assess_session",JSON.stringify(assess_session));
 };
 </script>
