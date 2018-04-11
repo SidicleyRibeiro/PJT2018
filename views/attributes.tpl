@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 28')
+%include('header_init.tpl', heading='State your problem 29')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -172,7 +172,51 @@ $(function() {
 		return false;
 	};
 
-// SESSION ENDING AND SUBMITTING
+//-------------------------------------------------- SESSION SUBMITTING -----------------------------------------------
+// Function to update the attributes table
+	function sync_table() {
+		$('#table_problem_statement').empty();
+		if (assess_session) {
+			for (var i = 0; i < assess_session.problem_statement.length; i++) {
+				var problem = assess_session.problem_statement[i];
+				
+				var text_table = "<tr>"+
+					'<td><input type="checkbox" id="checkbox_' + i + '" value="' + i + '" name="' + problem.name + '" '+(attribute.checked ? "checked" : "")+'></td>'+
+					'<td>' + problem.type + '</td>'+
+					'<td>' + problem.name + '</td>'+
+					'<td>' + problem.unit + '</td>';
+					
+				if (problem.type == "Discret") {
+					text_table += '<td>['    ','    ']</td>';
+				} 
+				else if (problem.type == "Continuous") {
+					text_table += '<td>[' + problem.val_min + ',' + problem.val_max + ']</td>';
+				};
+				
+				text_table += '<td>' + problem.method + '</td>'+
+					'<td><button type="button" id="edit_' + i + '" class="btn btn-default btn-xs">Edit</button></td>'+
+					'<td><button type="button" class="btn btn-default" id="deleteK'+i+'"><img src="/static/img/delete.ico" style="width:16px"/></button></td></tr>';
+								
+				$('#table_problem_statement').append(text_table);
+				//We define the action when we click on the State check input
+				$('#checkbox_' + i).click(function() {
+					checked_button_clicked($(this))
+				});
+				
+				// Defines what happens when you click on a Delete button
+				(function(_i) {
+					$('#deleteK' + _i).click(function() {
+						if (confirm("You are about to delete the problem statement "+assess_session.problem_statement[_i].name+".\nAre you sure ?") == false) {
+							return
+						};
+						assess_session.problem_statement.splice(_i, 1);
+						localStorage.setItem("assess_session", JSON.stringify(assess_session));// backup local
+						window.location.reload();//refresh the page
+					});
+				})(i);
+
+//Defines what happens if you click de EDIT button
+
 /// Defines what happens when you click on the DISCRET Submit button
 	$('#submit_discret').click(function() {
 		var name = $('#problem_name_discret').val();
@@ -183,7 +227,7 @@ $(function() {
 			method = "GAMBLE";
 		}
 		
-	//Tirei a funcao anterior do nome
+		
 		if (isProblem(name) && (edit_mode == false)) {
 			alert ("This problem statement is already submitted");
 		}
