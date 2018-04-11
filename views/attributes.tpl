@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 26')
+%include('header_init.tpl', heading='State your problem 27')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -130,6 +130,7 @@ $(function() {
 
 //<!----------------------------------------------   VALIDÉ JUSQU'ICI :D    --------------------------------------------------
 
+// SESSION CREATION AND SETTING
 $(function() {
 	var assess_session = JSON.parse(localStorage.getItem("assess_session")),
 		edit_mode = false,
@@ -161,6 +162,17 @@ $(function() {
 		
 	};
 
+// VERIFICATION FONCTIONS OF THE ENTRIES
+	function isAttribute(name) {
+		for (var i = 0; i < assess_session.problem_statement.length; i++) {
+			if (assess_session.problem_statement[i].name == name) {
+				return true;
+			};
+		};
+		return false;
+	};
+
+// SESSION ENDING AND SUBMITTING
 /// Defines what happens when you click on the DISCRET Submit button
 	$('#submit_discret').click(function() {
 		var name = $('#problem_name_discret').val();
