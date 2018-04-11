@@ -181,17 +181,19 @@ $(function() {
 				var problem = assess_session.problem_statement[i];
 				
 				var text_table = "<tr>"+
-					'<td><input type="checkbox" id="checkbox_' + i + '" value="' + i + '" name="' + problem.name + '" '+(attribute.checked ? "checked" : "")+'></td>'+
+					'<td><input type="checkbox" id="checkbox_' + i + '" value="' + i + '" name="' + problem.name + '" '+(problem.checked ? "checked" : "")+'></td>'+
 					'<td>' + problem.type + '</td>'+
 					'<td>' + problem.name + '</td>'+
-					'<td>' + problem.unit + '</td>';
+					'<td>' +  + '</td>';
 					
 				if (problem.type == "Discret") {
 					text_table += '<td>['    ','    ']</td>';
 				} 
-				else if (problem.type == "Continuous") {
+				
+				//I've commented continuous
+				//else if (problem.type == "Continuous") {
 					text_table += '<td>[' + problem.val_min + ',' + problem.val_max + ']</td>';
-				};
+				//};
 				
 				text_table += '<td>' + problem.method + '</td>'+
 					'<td><button type="button" id="edit_' + i + '" class="btn btn-default btn-xs">Edit</button></td>'+
@@ -219,7 +221,7 @@ $(function() {
 
 /// Defines what happens when you click on the DISCRET Submit button
 	$('#submit_discret').click(function() {
-		var name = $('#problem_name_discret').val();
+		var name = $('#problem_discret').val();
 		var method = "PW";
 		if ($("select option:selected").text() == "Probability Wheel") {
 			method = "PW";
