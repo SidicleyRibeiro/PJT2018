@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 18')
+%include('header_init.tpl', heading='State your problem 19')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -131,8 +131,20 @@ $(function() {
 	var assess_session = JSON.parse(localStorage.getItem("assess_session")), //JSON.parse gets the strings for the local storage and tranforms it into js objects.
 		edit_mode = false, 
 		edited_attribute=0; //CHANGER APRES
-		
-	localStorage.setItem("assess_session",JSON.stringify(assess_session));
-};
+	// Create a new session if there is no existing one yet - ADAPTER ENTREES APRES
+	if (!assess_session) {
+		assess_session = {
+			"problem_statements": [],
+			"settings": {
+				"decimals_equations": 3,
+				"decimals_dpl": 8,
+				"language": "english",
+				"display": "trees"
+			}
+		};
+		localStorage.setItem("assess_session", JSON.stringify(assess_session)); 
+		//Here we save the sessions in the server's memory in order to avoid the deleting of the information each time we close it.
+	};
+
 </script>
 
