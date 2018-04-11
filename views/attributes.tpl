@@ -183,9 +183,8 @@ $(function() {
 			method = "GAMBLE";
 		}
 		
-		if (!(name)) {
-			alert('Please fill correctly the name field');
-		} else if (isProblem(name) && (edit_mode == false)) {
+	//Tirei a funcao anterior do nome
+		if (isProblem(name) && (edit_mode == false)) {
 			alert ("This problem statement is already submitted");
 		}
 		
