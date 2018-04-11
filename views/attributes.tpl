@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 11')
+%include('header_init.tpl', heading='State your problem 12')
 
 <h2>List of current problems:</h2>
 <table class="table table-striped">
@@ -156,86 +156,6 @@ $(function() {
 		localStorage.setItem("assess_session", JSON.stringify(assess_session)); //Here we save the sessions in the server's memory in order to avois the deleting of the information each time we close it.
 	};
 	
-<!-------------------------------------------------   VALIDATION PROCESS ------------------------------>
-//This functions are going to be called afterwards.
-
-// Function to know if "name" is an existing attribute of the current session
-	function isAttribute(name) {
-		for (var i = 0; i < assess_session.attributes.length; i++) {
-			if (assess_session.attributes[i].name == name) {
-				return true;
-			};
-		};
-		return false;
-	};
-	
-<!-----------------------WE THINK THE VAL LIST IS A LIST WITH THE ENTRY VALUES, WE NEED TO VERIFY THAT AFTER-------------------------->
-// Function to know if at least one element of val_list is empty
-	function isOneValueOfTheListEmpty(val_list){
-		var list_len = val_list.length;
-		for (var i=0; i<list_len; i++) {
-			if(val_list[i] == ""){return true}
-		};
-		return false;
-	};
-	
-// Function to know if each typed value is different from the others
-	function areAllValuesDifferent(val_list, val_min, val_max){
-		var list_len = val_list.length;
-		for (var i=0; i<list_len; i++) {
-			if (val_list[i] == val_min || val_list[i] == val_max){
-				return false;
-			};
-			for (var j=0; j<list_len; j++) {
-				if(val_list[i] == val_list[j] && i!=j){
-					return false;
-				}
-			}
-		};
-		return true;
-	};
-
-// Function to check if there is an underscore in the typed values
-	function isThereUnderscore(val_list, val_min, val_max){
-		var list_len = val_list.length;
-		for (var i=0; i<list_len; i++) {
-			if (val_list[i].search("_")!=-1){
-				return false;
-			};
-		};
-		if (val_min.search("")!=-1 || val_max.search("")!=-1){
-			return false;
-		};
-		return true;
-	};
-	
-// Function to check if there is a hyphen in the typed values
-	function isThereHyphen(val_list, val_min, val_max){
-		var list_len = val_list.length;
-		for (var i=0; i<list_len; i++) {
-			if (val_list[i].search("-")!=-1){
-				return false;
-			};
-		};
-		if (val_min.search("-")!=-1 || val_max.search("-")!=-1){
-			return false;
-		};
-		return true;
-	};
-	
-// Function to check if there is a blank space in the typed values
-	function isThereBlankSpace(val_list, val_min, val_max){
-		var list_len = val_list.length;
-		for (var i=0; i<list_len; i++) {
-			if (val_list[i].search(" ")!=-1){
-				return false;
-			};
-		};
-		if (val_min.search(" ")!=-1 || val_max.search(" ")!=-1){
-			return false;
-		};
-		return true;
-	};
 
 
 </script>
