@@ -89,6 +89,43 @@ $("#form_discret").hide();
 $("#form_continuous").hide();
 $('li.manage').addClass("active"); //CHANGER LE NOM APRES
 
+	///VALIDÉ JUSQU'À ICI
+/// Function that manages the influence of the "button_type" buttons (Discret/Continuous) (just the design : green/white) 
+ function update_method_button(type){ 
+ 	var list_types = ["Discret", "Continuous"]; 
+ 	 
+ 	for(var i=0; i<list_types.length; i++){ 
+ 		if(type==list_types[i]){ 
+ 			$("#button_"+list_types[i]).removeClass('btn-default'); 
+ 			$("#button_"+list_types[i]).addClass('btn-success'); 
+ 		} else { 
+ 			$("#button_"+list_types[i]).removeClass('btn-success'); 
+ 			$("#button_"+list_types[i]).addClass('btn-default'); 
+ 		} 
+ 	} 
+ } 
+
+/// Action from Discret/Continuous button 
+ $(function() { 
+ 	///  ACTION FROM BUTTON DISCRET 
+ 	$("#button_Discret").click(function () { 
+ 		update_method_button("Discret"); //update the active type of new attribute 
+ 		$("#form_discret").fadeOut(500); 
+ 		$("#form_discret").fadeIn(500); 
+ 		window.scrollBy(0, 500); 
+ 	}); 
+  
+ 	///  ACTION FROM BUTTON CONTINUOUS 
+ 	$("#button_Continuous").click(function () { 
+ 		update_method_button("Continuous"); //update the active type of new attribute 
+ 		$("#form_continuous").fadeOut(500); 
+ 		$("#form_continuous").fadeIn(500); 
+ 		window.scrollBy(0, 500); 
+ 	}); 
+ }); 
+
+//// 168
+
 </script> 
 </body> 
 </html> 
