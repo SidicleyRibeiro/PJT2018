@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 2.6')
+%include('header_init.tpl', heading='State your problem 2.7')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -89,7 +89,7 @@ $("#form_discret").hide();
 $("#form_continuous").hide();
 $('li.manage').addClass("active"); //CHANGER LE NOM APRES
 
-	///VALIDÉ JUSQU'À ICI
+	///VALIDÉ JUSQU'À ICI (112-135 OMITED)
 /// Function that manages the influence of the "button_type" buttons (Discret/Continuous) (just the design : green/white) 
  function update_method_button(type){ 
  	var list_types = ["discret", "continuous"]; 
@@ -143,7 +143,7 @@ $(function() {
  	// Create a new session if there is no existing one yet 
  	if (!assessproba_session) { 
  		assessproba_session = { 
- 			"attributes": [], 
+ 			"problem_statements": [], 
  			"settings": { 
  				"decimals_equations": 3, 
  				"decimals_dpl": 8, 
@@ -154,7 +154,107 @@ $(function() {
  			} 
  		}; 
  		localStorage.setItem("assessproba_session", JSON.stringify(assessproba_session)); 
- 	}; 
+ 	};  ///212
+	
+	/////////////////////////////////////////////////////////////////////// 
+ 	//////////////////////         FUNCTIONS         ////////////////////// 
+ 	/////////////////////////////////////////////////////////////////////// 
+ 	 
+					///215-303 APRES REVISER
+					
+ 	// Function to update the attributes table 
+ 	function sync_table() { 
+ 		$('#table_problem').empty(); 
+ 		if (assessproba_session) { 
+ 			for (var i = 0; i < assessproba_session.problems.length; i++) { 
+ 				var problem = assessproba_session.problems[i]; 
+ 				 
+ 				var text_table = "<tr>"+ 
+ 					'<td><input type="checkbox" id="checkbox_' + i + '" value="' + i + '" statement="' + problem.statement + '" '+(problem.checked ? "checked" : "")+'></td>'+ 
+ 					'<td>' + problem.type + '</td>'+ 
+ 					'<td>' + problem.statement + '</td>'+ 
+ 					'<td>' + problem.unit + '</td>'; 
+ 					 
+ 				if (problem.type == "continuous") { 
+ 					text_table += '<td>[' + problem.val_min + ',' + problem.val_max + ']</td>'; 
+ 				}  
+ 				else if (problem.type == "discret") { 
+ 					text_table += '<td></td>';  
+ 				}; 
+ 				 
+ 				text_table += '<td>' + problem.method + '</td>'+ 
+ 					'<td><button type="button" id="edit_' + i + '" class="btn btn-default btn-xs">Edit</button></td>'+ 
+ 					'<td><button type="button" class="btn btn-default" id="deleteK'+i+'"><img src="/static/img/delete.ico" style="width:16px"/></button></td></tr>'; 
+ 								 
+ 				$('#table_problem').append(text_table); 
+  
+ 				//We define the action when we click on the State check input 
+ 				$('#checkbox_' + i).click(function() { 
+ 					checked_button_clicked($(this)) 
+ 				}); 
+ 				 
+ 				// Defines what happens when you click on a Delete button 
+ 				(function(_i) { 
+ 					$('#deleteK' + _i).click(function() { 
+ 						if (confirm("You are about to delete the problem "+assessproba_session.problems[_i].statement+".\nAre you sure ?") == false) { 
+ 							return 
+ 						}; 
+ 						assessproba_session.problems.splice(_i, 1); 
+ 						localStorage.setItem("assessproba_session", JSON.stringify(assessproba_session));// backup local 
+ 						window.location.reload();//refresh the page 
+ 					}); 
+ 				})(i); 
+  
+ 				// Defines what happend when you click on the Edit button 
+ 				(function(_i) { 
+ 					$('#edit_' + _i).click(function() { 
+ 						edit_mode=true; 
+ 						edited_problem=_i; 
+ 						var problem_edit = assessproba_session.problems[_i]; 
+ 						 
+ 						$('#add_problem h2').text("Edit problem "+problem_edit.statement); 
+ 						 
+ 						if (problem_edit.type == "discret") { 
+ 							update_method_button("discret"); //update the active type of problem 
+ 							$("#form_continuous").fadeOut(500); 
+ 							$("#form_discret").fadeIn(500); 
+ 							 
+367 							// Rewrites the existing values inside the textboxes 
+368 							$('#att_name_quanti').val(attribute_edit.name); 
+369 							$('#att_unit_quanti').val(attribute_edit.unit); 
+370 							$('#att_value_min_quanti').val(attribute_edit.val_min); 
+371 							$('#att_value_max_quanti').val(attribute_edit.val_max); 
+372 							$('#att_method_quanti option[value='+attribute_edit.method+']').prop('selected', true); 
+373 							$('#att_mode_quanti').prop('checked', (attribute_edit.mode=="Normal" ? false : true)); 
+374 						}  
+375 						else if (attribute_edit.type == "Qualitative") { 
+376 							update_method_button("Qualitative"); //update the active type of attribute 
+377 							$("#form_quanti").fadeOut(500); 
+378 							$("#form_quali").fadeIn(500); 
+379 							 
+380 							$('#att_name_quali').val(attribute_edit.name); 
+381 							$('#att_value_min_quali').val(attribute_edit.val_min); 
+382 							$('#att_value_med_quali_1').val(attribute_edit.val_med[0]); 
+383 							 
+384 							for (var ii=2, len=attribute_edit.val_med.length; ii<len+1; ii++) { 
+385 								var longueur = lists.length, 
+386 									new_item = document.createElement('li'); 
+387 								new_item.innerHTML = "<input type='text' class='form-control' id='att_value_med_quali_"+ String(longueur+1) +"' placeholder='Value Med " + String(longueur+1) +"'/>"; 
+388 								lists[longueur-1].parentNode.appendChild(new_item); 
+389 								 
+390 								$('#att_value_med_quali_'+ii).val(attribute_edit.val_med[ii-1]); 
+391 							}; 
+392 							 
+393 							$('#att_value_max_quali').val(attribute_edit.val_max); 
+394 						} 
+395 					}); 
+396 				})(i); 
+397 			} 
+398 		} 
+399 	} 
+400 	sync_table(); 
+
+
  }); 
 
 </script> 
