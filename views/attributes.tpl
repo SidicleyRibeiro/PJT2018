@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 2.2')
+%include('header_init.tpl', heading='State your problem 2.3')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -109,7 +109,7 @@ $('li.manage').addClass("active"); //CHANGER LE NOM APRES
  $(function() { 
  	///  ACTION FROM BUTTON DISCRET 
  	$("#button_discret").click(function () { 
- 		update_method_button("Discret"); //update the active type of new attribute 
+ 		update_method_button("discret"); //update the active type of new attribute 
  		$("#form_discret").fadeOut(500); 
  		$("#form_discret").fadeIn(500); 
  		window.scrollBy(0, 500); 
@@ -117,7 +117,7 @@ $('li.manage').addClass("active"); //CHANGER LE NOM APRES
   
  	///  ACTION FROM BUTTON CONTINUOUS 
  	$("#button_continuous").click(function () { 
- 		update_method_button("Continuous"); //update the active type of new attribute 
+ 		update_method_button(continuous"); //update the active type of new attribute 
  		$("#form_continuous").fadeOut(500); 
  		$("#form_continuous").fadeIn(500); 
  		window.scrollBy(0, 500); 
