@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 2.5')
+%include('header_init.tpl', heading='State your problem 2.6')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -124,7 +124,38 @@ $('li.manage').addClass("active"); //CHANGER LE NOM APRES
  	}); 
  }); 
 
-//// 168
+					//// VALIDÉ JUSQU'À ICI (168)
+
+$(function() { 
+ 	var assessproba_session = JSON.parse(localStorage.getItem("assessproba_session")), 
+ 		edit_mode = false, 
+ 		edited_attribute=0; 
+ 		 
+ 	// When you click on the RED BIN // Delete the wole session 
+ 	$('.del_simu').click(function() { 
+ 		if (confirm("You are about to delete all the problem statements and their assessments.\nAre you sure ?") == false) { 
+ 			return 
+ 		}; 
+ 		localStorage.removeItem("assessproba_session"); 
+ 		window.location.reload(); 
+ 	}); 
+ 	 
+ 	// Create a new session if there is no existing one yet 
+ 	if (!assessproba_session) { 
+ 		assessproba_session = { 
+ 			"attributes": [], 
+ 			"settings": { 
+ 				"decimals_equations": 3, 
+ 				"decimals_dpl": 8, 
+ 				"proba_ce": 0.30, 
+ 				"proba_le": 0.30, 
+ 				"language": "english", 
+ 				"display": "trees" 
+ 			} 
+ 		}; 
+ 		localStorage.setItem("assessproba_session", JSON.stringify(assessproba_session)); 
+ 	}; 
+ }); 
 
 </script> 
 </body> 
