@@ -1,4 +1,4 @@
-%include('header_init.tpl', heading='State your problem 2.1')
+%include('header_init.tpl', heading='State your problem 2.2')
 <h2>List of current problems:</h2>
 <table class="table table-striped">
   <thead>
@@ -92,7 +92,7 @@ $('li.manage').addClass("active"); //CHANGER LE NOM APRES
 	///VALIDÉ JUSQU'À ICI
 /// Function that manages the influence of the "button_type" buttons (Discret/Continuous) (just the design : green/white) 
  function update_method_button(type){ 
- 	var list_types = ["Discret", "Continuous"]; 
+ 	var list_types = ["discret", "continuous"]; 
  	 
  	for(var i=0; i<list_types.length; i++){ 
  		if(type==list_types[i]){ 
@@ -108,7 +108,7 @@ $('li.manage').addClass("active"); //CHANGER LE NOM APRES
 /// Action from Discret/Continuous button 
  $(function() { 
  	///  ACTION FROM BUTTON DISCRET 
- 	$("#button_Discret").click(function () { 
+ 	$("#button_discret").click(function () { 
  		update_method_button("Discret"); //update the active type of new attribute 
  		$("#form_discret").fadeOut(500); 
  		$("#form_discret").fadeIn(500); 
@@ -116,7 +116,7 @@ $('li.manage').addClass("active"); //CHANGER LE NOM APRES
  	}); 
   
  	///  ACTION FROM BUTTON CONTINUOUS 
- 	$("#button_Continuous").click(function () { 
+ 	$("#button_continuous").click(function () { 
  		update_method_button("Continuous"); //update the active type of new attribute 
  		$("#form_continuous").fadeOut(500); 
  		$("#form_continuous").fadeIn(500); 
