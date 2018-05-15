@@ -54,12 +54,14 @@
 	<div id="form_continuous">
 		<div class="form-group">
 			<label for="problem_continuous">I would like to assess the probability distribuition of:</label>
-			<input type="text" class="form-control" id="problem_continuous" placeholder="Example: the profit of my company in 2020">
+			<input type="text" class="form-control" id="problem_continuous" placeholder="Example: 
+			the profit of my company in 2020">
 		</div>
 		
 		<div class="form-group">
 			<label for="unit_continuous">Unit:</label>
-			<input type="text" class="form-control" id="unit_continuous" placeholder="Exemples: Euros, Dollars, Bitcoins..">
+			<input type="text" class="form-control" id="unit_continuous" placeholder="Exemples: 
+			Euros, Dollars, Bitcoins..">
 		</div>
 		<div class="form-group">
 			<label for="min_value_continuous">Minimum value:</label>
