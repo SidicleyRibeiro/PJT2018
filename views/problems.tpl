@@ -34,7 +34,8 @@
 	<div id="form_discret">
 		<div class="form-group">
 			<label for="problem_discret">I'd like to know the probability of:</label>
-			<input type="text" class="form-control" id="problem_discret" placeholder="Example: The success of my company in France">
+			<input type="text" class="form-control" id="problem_discret" placeholder="Example: 
+			The success of my company in France">
 		</div>
 		
 		<div class="form-group">
