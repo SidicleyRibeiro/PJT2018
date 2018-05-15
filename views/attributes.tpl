@@ -207,7 +207,7 @@ $(function() {
  						window.location.reload();//refresh the page 
  					}); 
  				})(i); 
-  
+  <!--
  				// Defines what happend when you click on the Edit button 
  				(function(_i) { 
  					$('#edit_' + _i).click(function() { 
@@ -256,7 +256,7 @@ $(function() {
 398 		} 
 399 	} 
 400 	sync_table(); 
-
+-->
 
  }); 
 
